@@ -7,10 +7,10 @@ import { AiFillGithub } from "react-icons/ai";
 import { SiNotion } from "react-icons/si";
 
 interface ResumeProps {
-  isHome?: boolean;
+  isMe?: boolean;
 }
 
-export default function Resume({ isHome = false }: ResumeProps) {
+export default function Resume({ isMe = false }: ResumeProps) {
   const downloadPdf = () => {
     const pdfRef = document.getElementById("resume");
 
@@ -147,7 +147,7 @@ export default function Resume({ isHome = false }: ResumeProps) {
                     <div className="w-[1px] h-[15px] bg-gray-500" />
                     <span>2022.07 ~ 재직중</span>
                   </h3>
-                  {!isHome && (
+                  {!isMe && (
                     <>
                       <span className="text-sm ">웹 프론트엔드 개발자</span>
                       <ul className="mt-4 list-[circle] space-y-4">
@@ -175,7 +175,7 @@ export default function Resume({ isHome = false }: ResumeProps) {
             </ul>
           </div>
           {/* 참여 프로젝트 */}
-          {!isHome && (
+          {!isMe && (
             <div>
               <h2 className="text-2xl mb-2">프로젝트</h2>
               <ul className="list-disc space-y-8">
@@ -318,7 +318,7 @@ export default function Resume({ isHome = false }: ResumeProps) {
           </div>
         </div>
       </div>
-      {!isHome && (
+      {!isMe && (
         <div className="flex justify-end mt-10">
           <button
             onClick={downloadPdf}

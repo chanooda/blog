@@ -1,6 +1,7 @@
 import { Header } from "@/components/layout";
 import { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
+import { usePathname } from "next/navigation";
 import "./globals.css";
 
 export const metadata: Metadata = {
