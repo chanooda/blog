@@ -1,7 +1,6 @@
 import { Header } from "@/components/layout";
 import { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
-import { usePathname } from "next/navigation";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,7 +14,11 @@ const notoSansKorea = Noto_Sans_KR({
   variable: "--noto-sans-korea",
 });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const setThemeMode = `
         if (JSON.parse(localStorage.dark)) {
           document.documentElement.classList.add('dark')
@@ -27,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ko" className="w-full h-full">
       <body
         className={`${notoSansKorea.variable}
-        font-sans w-full h-full bg-gray-50 dark:bg-gray-900 text-gray-700  dark:text-gray-300 overflow-hidden`}
+        font-sans w-full h-full bg-white dark:bg-gray-900 text-gray-700  dark:text-gray-300 overflow-hidden`}
       >
         <script
           dangerouslySetInnerHTML={{
@@ -36,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         ></script>
         <div className="w-full h-full mx-auto max-w-[1400px] flex flex-col">
           <Header />
-          <div className="w-full p-4 mt-24 overflow-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:bg-gray-500 dark:[&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-thumb]:rounded-xl">
+          <div className="w-full h-full px-4 mt-24 overflow-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:bg-gray-500 dark:[&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-thumb]:rounded-xl">
             {children}
           </div>
         </div>

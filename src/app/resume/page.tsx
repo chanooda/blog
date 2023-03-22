@@ -47,38 +47,54 @@ export default function Resume({ isMe = false }: ResumeProps) {
               </div>
               <div className="flex items-center gap-2">
                 <AiFillGithub />
-                <a target="_blank" rel="noreferrer noopener" href="https://github.com/chanooda">
+                <a
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  href="https://github.com/chanooda"
+                >
                   https://github.com/chanooda
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <SiNotion />
-                <a target="_blank" rel="noreferrer noopener" href="https://github.com/chanooda">
+                <a
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  href="https://github.com/chanooda"
+                >
                   https://github.com/chanooda
                 </a>
               </div>
             </div>
-            <div className="p-4 bg-gray-200 dark:bg-gray-700 rounded-xl">
-              <p className="text-sm">
-                React, Typescript를 주력으로 개발 경력 1년차를 향해 가고있는 신입 웹 개발자입니다.
-                <br />
-                <br />웹 프론트엔드 개발자로 첫 입사 후 한달 뒤 주요 신규 프로젝트에 참여하였습니다.
-                팀원과 소통하며 새로운 기술 스택들을 성공적으로 도입하였습니다. 그 후에는 단독으로
-                사내 첫 내부 서비스 프론트엔드 개발에 참여하여 웹앱 환경에서 동작하는 서비스를
-                개발하였습니다. 프론트엔드, 백엔드, 데스크탑 앱 등 크고 작은 프로젝트를 맡으며
-                다양한 개발자들과 협업할 수 있는 기반을 닦았습니다.
-                <br />
-                <br />
-                로봇처럼 주어진대로 개발만 하는 것이 아닌, 언제나 개선점과 행동에 대한 이유를
-                생각하며 개발하려 하고 있습니다. 업무와 관련하여 팀원들과 적극적으로 문제점과
-                개선점에 대해 소통합니다.
-                <br />
-                <br />
-                모르는 것을 두려워하지 않고, 물어보는 것을 두려워 하지 않습니다. 새로운 것들에 대해
-                공부하는 것을 즐깁니다. 프론트엔드 개발자에 국한되는 것이 아닌 다양한 분야에 대한
-                튼튼한 기초를 새우며 개발과 협업에 대한 전반적인 이해를 쌓으려 합니다.
-              </p>
-            </div>
+            {!isMe && (
+              <div className="p-4 bg-gray-200 dark:bg-gray-700 rounded-xl">
+                <p className="text-sm">
+                  React, Typescript를 주력으로 개발 경력 1년차를 향해 가고있는
+                  신입 웹 개발자입니다.
+                  <br />
+                  <br />웹 프론트엔드 개발자로 첫 입사 후 한달 뒤 주요 신규
+                  프로젝트에 참여하였습니다. 팀원과 소통하며 새로운 기술
+                  스택들을 성공적으로 도입하였습니다. 그 후에는 단독으로 사내 첫
+                  내부 서비스 프론트엔드 개발에 참여하여 웹앱 환경에서 동작하는
+                  서비스를 개발하였습니다. 프론트엔드, 백엔드, 데스크탑 앱 등
+                  크고 작은 프로젝트를 맡으며 다양한 개발자들과 협업할 수 있는
+                  기반을 닦았습니다.
+                  <br />
+                  <br />
+                  로봇처럼 주어진대로 개발만 하는 것이 아닌, 언제나 개선점과
+                  행동에 대한 이유를 생각하며 개발하려 하고 있습니다. 업무와
+                  관련하여 팀원들과 적극적으로 문제점과 개선점에 대해
+                  소통합니다.
+                  <br />
+                  <br />
+                  모르는 것을 두려워하지 않고, 물어보는 것을 두려워 하지
+                  않습니다. 새로운 것들에 대해 공부하는 것을 즐깁니다.
+                  프론트엔드 개발자에 국한되는 것이 아닌 다양한 분야에 대한
+                  튼튼한 기초를 새우며 개발과 협업에 대한 전반적인 이해를 쌓으려
+                  합니다.
+                </p>
+              </div>
+            )}
           </div>
           {/* 기술 */}
           <div>
@@ -88,7 +104,11 @@ export default function Resume({ isMe = false }: ResumeProps) {
                 <div className="flex gap-2 items-center flex-wrap">
                   <h3>공통</h3>
                   <div className="flex gap-2 flex-wrap">
-                    <Badge color="F7DF1E" label="JavaScript" iconColor="black" />
+                    <Badge
+                      color="F7DF1E"
+                      label="JavaScript"
+                      iconColor="black"
+                    />
                     <Badge color="3178C6" label="TypeScript" />
                     <Badge color="339933" label="Node.js" />
                   </div>
@@ -143,7 +163,9 @@ export default function Resume({ isMe = false }: ResumeProps) {
               <li>
                 <div>
                   <h3 className="flex items-center gap-2">
-                    <span className="font-semibold text-lg">(주)라온스토리</span>
+                    <span className="font-semibold text-lg">
+                      (주)라온스토리
+                    </span>
                     <div className="w-[1px] h-[15px] bg-gray-500" />
                     <span>2022.07 ~ 재직중</span>
                   </h3>
@@ -153,8 +175,13 @@ export default function Resume({ isMe = false }: ResumeProps) {
                       <ul className="mt-4 list-[circle] space-y-4">
                         <li>
                           <div>
-                            <h4 className="font-semibold mb-2">웹 신규 서비스 클라이언트 개발</h4>
-                            <p>한국서부발전의 계좌이체거래약정서 등록 정부과제 웹서비스 개발</p>
+                            <h4 className="font-semibold mb-2">
+                              웹 신규 서비스 클라이언트 개발
+                            </h4>
+                            <p>
+                              한국서부발전의 계좌이체거래약정서 등록 정부과제
+                              웹서비스 개발
+                            </p>
                             <p>사내 첫 내부 서비스 웹앱 프론트엔드 단독 개발</p>
                           </div>
                         </li>
@@ -163,8 +190,13 @@ export default function Resume({ isMe = false }: ResumeProps) {
                             <h4 className="font-semibold mb-2">
                               웹 프론트엔드 신규 개발기술 도입 및 개선
                             </h4>
-                            <p>모노레포 및 디자인 시스템을 이용한 관리자 웹 서비스 단독 개발</p>
-                            <p>react 관련 신규 라이브러리, 기술 실서비스 도입</p>
+                            <p>
+                              모노레포 및 디자인 시스템을 이용한 관리자 웹
+                              서비스 단독 개발
+                            </p>
+                            <p>
+                              react 관련 신규 라이브러리, 기술 실서비스 도입
+                            </p>
                           </div>
                         </li>
                       </ul>
@@ -183,8 +215,8 @@ export default function Resume({ isMe = false }: ResumeProps) {
                   <div className="space-y-4">
                     <h3 className="font-semibold text-lg">홈즈</h3>
                     <p>
-                      임대인과 임차인은 자신의 매물을 등록하고 중개인은 매물 정보를 확인하고
-                      연결해주는 부동산 웹앱 서비스
+                      임대인과 임차인은 자신의 매물을 등록하고 중개인은 매물
+                      정보를 확인하고 연결해주는 부동산 웹앱 서비스
                     </p>
                     <div className="flex gap-2 flex-wrap">
                       <Badge color="61DAFB" label="React" iconColor="black" />
@@ -199,19 +231,26 @@ export default function Resume({ isMe = false }: ResumeProps) {
                       <li>
                         <h4>역할</h4>
                         <ul className="list-[square]">
-                          <li>총 3명 (디자이너, 백엔드 개발자, 프론트엔드 개발자)</li>
+                          <li>
+                            총 3명 (디자이너, 백엔드 개발자, 프론트엔드 개발자)
+                          </li>
                           <li>프론트엔드 개발 (기여도 100%)</li>
                         </ul>
                       </li>
                       <li>
                         <h4>상세 업무</h4>
                         <ul className="list-[square]">
-                          <li>서비스 앱, 관리자 페이지, 홍보 랜딩 페이지 개발</li>
                           <li>
-                            lerna, emotion을 이용한 모노레포 및 디자인 시스템을 구성하여 관리자 웹
-                            서비스 구현
+                            서비스 앱, 관리자 페이지, 홍보 랜딩 페이지 개발
                           </li>
-                          <li>네이티브 앱과 연동하기 위한 모바일 환경 및 반응형 구현</li>
+                          <li>
+                            lerna, emotion을 이용한 모노레포 및 디자인 시스템을
+                            구성하여 관리자 웹 서비스 구현
+                          </li>
+                          <li>
+                            네이티브 앱과 연동하기 위한 모바일 환경 및 반응형
+                            구현
+                          </li>
                         </ul>
                       </li>
                       <li>개발기간 : 2023.01 ~ 2023.02</li>
@@ -224,8 +263,9 @@ export default function Resume({ isMe = false }: ResumeProps) {
                       한국서부발전 계좌이체거래약정서 등록 시스템
                     </h3>
                     <p>
-                      기존의 오프라인으로 진행 되었던 한국서부발전 사업 평가에 참여하는 회원의
-                      정보를 관리하고 회원들의 계좌이체거래약정서를 등록, 승인, 관리하는 웹 서비스
+                      기존의 오프라인으로 진행 되었던 한국서부발전 사업 평가에
+                      참여하는 회원의 정보를 관리하고 회원들의
+                      계좌이체거래약정서를 등록, 승인, 관리하는 웹 서비스
                     </p>
                     <div className="flex gap-2 mt-2 flex-wrap">
                       <Badge color="61DAFB" label="React" iconColor="black" />
@@ -239,8 +279,8 @@ export default function Resume({ isMe = false }: ResumeProps) {
                         <h4>역할</h4>
                         <ul className="list-[square]">
                           <li>
-                            총 6명 (디자이너 1, 백엔드 개발자 2, 프론트엔드 개발자 2, 프로젝트
-                            매니저 1)
+                            총 6명 (디자이너 1, 백엔드 개발자 2, 프론트엔드
+                            개발자 2, 프로젝트 매니저 1)
                           </li>
                           <li>프론트엔드 개발 (기여도 70%)</li>
                         </ul>
@@ -267,7 +307,15 @@ export default function Resume({ isMe = false }: ResumeProps) {
             <ul className="list-disc space-y-8">
               <li>
                 <div>
-                  <h3 className="font-semibold text-lg">주식정보 서비스</h3>
+                  <h3 className="font-semibold text-lg">
+                    <a
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      href="http://54.180.17.252:3001/"
+                    >
+                      주식정보 서비스
+                    </a>
+                  </h3>
                   <p>한국투자 오픈 api를 이용한 코스피 주식 정보 서비스</p>
                   <div className="flex gap-2 mt-2 flex-wrap">
                     <Badge color="61DAFB" label="React" iconColor="black" />
@@ -290,15 +338,22 @@ export default function Resume({ isMe = false }: ResumeProps) {
                       <div className=" space-y-1">
                         <span className="ml-3 text-sm">프론트엔드</span>
                         <ul className="list-[square]">
-                          <li>apex-chart 라이브러리를 사용해 주식 정보를 차트화</li>
-                          <li>react query를 사용해 server state를 관리하고 실시간 데이터를 관리</li>
+                          <li>
+                            apex-chart 라이브러리를 사용해 주식 정보를 차트화
+                          </li>
+                          <li>
+                            react query를 사용해 server state를 관리하고 실시간
+                            데이터를 관리
+                          </li>
                           <li>모바일 반응형 디자인 구현</li>
                         </ul>
                       </div>
                       <div className="space-y-1">
                         <span className="ml-3 text-sm">백엔드</span>
                         <ul className="list-[square]">
-                          <li>express를 이용해 한국투자 오픈 api에 연결 및 제공</li>
+                          <li>
+                            express를 이용해 한국투자 오픈 api에 연결 및 제공
+                          </li>
                         </ul>
                       </div>
                       <div className=" space-y-1">
@@ -306,7 +361,8 @@ export default function Resume({ isMe = false }: ResumeProps) {
                         <ul className="list-[square]">
                           <li>aws ec2와 docker를 이용하여 배포</li>
                           <li>
-                            github-action, s3 bucket, codeDeploy를 이용하여 자동배포 환경 구성
+                            github-action, s3 bucket, codeDeploy를 이용하여
+                            자동배포 환경 구성
                           </li>
                         </ul>
                       </div>
