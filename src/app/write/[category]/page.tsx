@@ -27,7 +27,7 @@ async function getData(category: string, next_cursor: string) {
   return response;
 }
 
-export default async function Page({
+export default async function Write({
   params,
 }: {
   params: { category: string; next_cursor: string };
@@ -51,7 +51,7 @@ export default async function Page({
                   <HiPencil className="text-gray-400 text-5xl" />
                 </div>
               )}
-              <div className="w-full flex flex-col gap-2">
+              <div className="w-full flex flex-col gap-2 min-w-0 flex-1">
                 <div className="w-full min-w-0">
                   <h2 className="w-full whitespace-nowrap text-ellipsis overflow-hidden">
                     {el?.properties?.Name?.title[0]?.text?.content}

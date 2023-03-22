@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { notionColorCodes } from "@/libs/notionColorCode";
 import { Client } from "@notionhq/client";
 import { MultiSelectList } from "@/components/notionPage";
 
