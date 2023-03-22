@@ -1,3 +1,5 @@
+"server-only";
+
 import { ColorType, notionColorCodes } from "@/libs/notionColorCode";
 import {
   formatDate,
@@ -201,94 +203,111 @@ export const Block = async ({ parentType, block, step = 1 }: BlockProps) => {
   if (!block?.type) return null;
   if (parentType !== "bulleted_list_item") step = 1;
   return (
-    <div
-      className={`flex items-start min-w-0 mb-2 ${
-        block?.type === "column_list"
-          ? "flex-row justify-start gap-2"
-          : "flex-col"
-      }`}
-      style={{
-        paddingLeft: step > 1 ? "25px" : "0px",
-      }}
-    >
-      {block?.type === "heading_1" && (
-        <div className="w-full mb-2" style={{ ...getColor(paragraph?.color) }}>
-          <h1 className="text-3xl font-semibold">
-            {block?.heading_1?.rich_text?.map((el, i) => (
-              <RichText key={i} richText={el} />
-            ))}
-          </h1>
-        </div>
-      )}
-      {block?.type === "heading_2" && (
-        <div className="w-full mb-2" style={{ ...getColor(paragraph?.color) }}>
-          <h1 className="text-2xl font-semibold">
-            {block?.heading_2?.rich_text?.map((el, i) => (
-              <RichText key={i} richText={el} />
-            ))}
-          </h1>
-        </div>
-      )}
-      {block?.type === "heading_3" && (
-        <div className="w-full mb-2" style={{ ...getColor(paragraph?.color) }}>
-          <h1 className="text-xl font-semibold">
-            {block?.heading_3?.rich_text?.map((el, i) => (
-              <RichText key={i} richText={el} />
-            ))}
-          </h1>
-        </div>
-      )}
-      {block?.type === "image" && (
-        <div className="mb-2">
-          <img className="w-full" src={block?.image?.file?.url} alt={""} />
-        </div>
-      )}
-      {block?.type === "paragraph" && (
-        <div className="w-full mb-2" style={{ ...getColor(paragraph?.color) }}>
-          {block?.paragraph?.rich_text?.map((el, i) => (
-            <RichText key={i} richText={el} />
-          ))}
-        </div>
-      )}
-      {block?.type === "bulleted_list_item" && (
-        <ul
-          className="whitespace-pre-wrap ml-7 space-y-2"
-          style={{
-            ...getColor(bulletedListItem?.color),
-            ...getListStyle(step),
-          }}
-        >
-          <li className={`w-full mb-2`}>
-            {block?.bulleted_list_item?.rich_text?.map((el, i) => (
-              <RichText key={i} richText={el} />
-            ))}
-          </li>
-        </ul>
-      )}
-      {block?.type === "divider" && (
-        <div className="w-full h-[0.5px] bg-gray-200 my-2" />
-      )}
-      {block?.type === "code" &&
-        block?.code?.rich_text?.map((el, i) => (
+    <>
+      <div
+        className={`flex items-start min-w-0 mb-2 ${
+          block?.type === "column_list"
+            ? "flex-row justify-start gap-2"
+            : "flex-col"
+        }`}
+        style={{
+          paddingLeft: step > 1 ? "25px" : "0px",
+        }}
+      >
+        {block?.type === "heading_1" && (
           <div
-            className="w-full p-4 rounded-lg bg-[rgb(247,_246,_243)] dark:bg-gray-700"
-            key={i}
+            className="w-full mb-2"
+            style={{ ...getColor(paragraph?.color) }}
           >
-            <pre>
-              <code>{el?.text?.content}</code>
-            </pre>
+            <h1 className="text-3xl font-semibold">
+              {block?.heading_1?.rich_text?.map((el, i) => (
+                <RichText key={i} richText={el} />
+              ))}
+            </h1>
           </div>
-        ))}
-      {child &&
-        child?.results.map((el: Block) => (
-          <Block
-            parentType={block?.type}
-            step={step + 1}
-            key={el?.id}
-            block={el}
-          />
-        ))}
-    </div>
+        )}
+        {block?.type === "heading_2" && (
+          <div
+            className="w-full mb-2"
+            style={{ ...getColor(paragraph?.color) }}
+          >
+            <h1 className="text-2xl font-semibold">
+              {block?.heading_2?.rich_text?.map((el, i) => (
+                <RichText key={i} richText={el} />
+              ))}
+            </h1>
+          </div>
+        )}
+        {block?.type === "heading_3" && (
+          <div
+            className="w-full mb-2"
+            style={{ ...getColor(paragraph?.color) }}
+          >
+            <h1 className="text-xl font-semibold">
+              {block?.heading_3?.rich_text?.map((el, i) => (
+                <RichText key={i} richText={el} />
+              ))}
+            </h1>
+          </div>
+        )}
+        {block?.type === "image" && (
+          <div className="mb-2">
+            <img className="w-full" src={block?.image?.file?.url} alt={""} />
+          </div>
+        )}
+        {block?.type === "paragraph" && (
+          <div
+            className="w-full mb-2"
+            style={{ ...getColor(paragraph?.color) }}
+          >
+            {block?.paragraph?.rich_text?.map((el, i) => (
+              <RichText key={i} richText={el} />
+            ))}
+          </div>
+        )}
+        {block?.type === "bulleted_list_item" && (
+          <ul
+            className="whitespace-pre-wrap ml-7 space-y-2"
+            style={{
+              ...getColor(bulletedListItem?.color),
+              ...getListStyle(step),
+            }}
+          >
+            <li className={`w-full mb-2`}>
+              {block?.bulleted_list_item?.rich_text?.map((el, i) => (
+                <RichText key={i} richText={el} />
+              ))}
+            </li>
+          </ul>
+        )}
+        {block?.type === "divider" && (
+          <div className="w-full h-[0.5px] bg-gray-200 my-2" />
+        )}
+        {block?.type === "code" &&
+          block?.code?.rich_text?.map((el, i) => (
+            <div
+              className="w-full p-4 rounded-lg bg-[rgb(247,_246,_243)] dark:bg-gray-700"
+              key={i}
+            >
+              <pre>
+                <code>{el?.text?.content}</code>
+              </pre>
+            </div>
+          ))}
+        {child &&
+          child?.results.map((el: Block) => (
+            <>
+              {/* @ts-expect-error Async Server Component */}
+              <Block
+                parentType={block?.type}
+                step={step + 1}
+                key={el?.id}
+                block={el}
+              />
+            </>
+          ))}
+      </div>
+    </>
   );
 };
 

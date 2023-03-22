@@ -22,7 +22,10 @@ export default async function Page({ params }: { params: { id: string } }) {
       <Properties properties={(page as any)?.properties} />
       <div className="w-full flex flex-col">
         {blocks?.results?.map((el) => (
-          <Block key={el?.id} block={el as Block} />
+          <>
+            {/* @ts-expect-error Async Server Component */}
+            <Block key={el?.id} block={el as Block} />
+          </>
         ))}
       </div>
     </div>
