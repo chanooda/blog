@@ -60,9 +60,9 @@ export default function Resume({ isMe = false }: ResumeProps) {
                 <a
                   target="_blank"
                   rel="noreferrer noopener"
-                  href="https://blog-pa00dt2he-hanrhfqkq-gmailcom.vercel.app/"
+                  href="https://blog-lyart-six-70.vercel.app/"
                 >
-                  https://blog-pa00dt2he-hanrhfqkq-gmailcom.vercel.app/
+                  개발 블로그
                 </a>
               </div>
             </div>
