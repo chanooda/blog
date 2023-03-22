@@ -1,5 +1,3 @@
-"server-only";
-
 import { ColorType, notionColorCodes } from "@/libs/notionColorCode";
 import {
   formatDate,
@@ -289,8 +287,10 @@ export const Block = async ({ parentType, block, step = 1 }: BlockProps) => {
               className="w-full p-4 rounded-lg bg-[rgb(247,_246,_243)] dark:bg-gray-700"
               key={i}
             >
-              <pre>
-                <code>{el?.text?.content}</code>
+              <pre className="w-full">
+                <code className="w-full block whitespace-pre-wrap break-words">
+                  {el?.text?.content}
+                </code>
               </pre>
             </div>
           ))}
