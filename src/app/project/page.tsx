@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Client } from "@notionhq/client";
 import { MultiSelectList } from "@/components/notionPage";
 
+export const dynamic = "force-dynamic";
+
 async function getData() {
   const notion = new Client({ auth: process.env.NOTION_SECRET });
   const response = await notion.databases.query({
