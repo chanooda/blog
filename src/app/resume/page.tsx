@@ -4,7 +4,7 @@ import React from "react";
 import { Badge } from "@/components/write";
 import { IoIosMail } from "react-icons/io";
 import { AiFillGithub } from "react-icons/ai";
-import { SiNotion } from "react-icons/si";
+import { AiFillHome } from "react-icons/ai";
 
 interface ResumeProps {
   isMe?: boolean;
@@ -56,13 +56,13 @@ export default function Resume({ isMe = false }: ResumeProps) {
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <SiNotion />
+                <AiFillHome />
                 <a
                   target="_blank"
                   rel="noreferrer noopener"
-                  href="https://github.com/chanooda"
+                  href="https://blog-pa00dt2he-hanrhfqkq-gmailcom.vercel.app/"
                 >
-                  https://github.com/chanooda
+                  https://blog-pa00dt2he-hanrhfqkq-gmailcom.vercel.app/
                 </a>
               </div>
             </div>
