@@ -2,6 +2,8 @@ import * as React from "react";
 import { Client } from "@notionhq/client";
 import { Block, Cover, Properties } from "@/components/notionPage";
 
+export const dynamic = "force-dynamic";
+
 async function getData(id: string) {
   const notion = new Client({ auth: process.env.NOTION_SECRET });
   const blocks = await notion.blocks.children.list({
