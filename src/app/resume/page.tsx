@@ -219,6 +219,7 @@ export default function Resume({ isMe = false }: ResumeProps) {
                       정보를 확인하고 연결해주는 부동산 웹앱 서비스
                     </p>
                     <div className="flex gap-2 flex-wrap">
+                      <Badge color="3178C6" label="TypeScript" />
                       <Badge color="61DAFB" label="React" iconColor="black" />
                       <Badge color="FF4154" label="React Query" />
                       <Badge color="EC5990" label="React Hook Form" />
@@ -268,6 +269,7 @@ export default function Resume({ isMe = false }: ResumeProps) {
                       계좌이체거래약정서를 등록, 승인, 관리하는 웹 서비스
                     </p>
                     <div className="flex gap-2 mt-2 flex-wrap">
+                      <Badge color="3178C6" label="TypeScript" />
                       <Badge color="61DAFB" label="React" iconColor="black" />
                       <Badge color="FF4154" label="React Query" />
                       <Badge color="EC5990" label="React Hook Form" />
@@ -307,6 +309,65 @@ export default function Resume({ isMe = false }: ResumeProps) {
             <ul className="list-disc space-y-8">
               <li>
                 <div>
+                  <h3 className="font-semibold text-lg">cakesmate</h3>
+                  <p>
+                    편하게 베이커리 관련 상품을 주문하고 관리할 수 있는 서비스
+                  </p>
+                  <div className="flex gap-2 mt-2 flex-wrap">
+                    <Badge color="3178C6" label="TypeScript" />
+                    <Badge color="61DAFB" label="React" iconColor="black" />
+                    <Badge color="FF4154" label="React Query" />
+                    <Badge color="EC5990" label="React Hook Form" />
+                    <Badge color="b543ac" label="Emotion" />
+                  </div>
+                  <ul className="list-[circle] mt-2 space-y-4">
+                    <li>
+                      <h4>역할</h4>
+                      <ul className="list-[square]">
+                        <li>총 1명 (개인 프로젝트)</li>
+                        <li>디자인, 프론트엔드</li>
+                      </ul>
+                    </li>
+                    <li className="space-y-2">
+                      <h4>상세 및 성과</h4>
+                      <div className=" space-y-1">
+                        <span className="ml-3 text-sm">프론트엔드</span>
+                        <ul className="list-[square]">
+                          <li>
+                            프로젝트에 필요한 Icon, Stpper, Image, Divider,
+                            Chip, Badge 디자인 시스템 컴포넌트 생성
+                          </li>
+                          <li>
+                            전체 ui 레이아웃 및 컴포넌트(header, nav) 구현
+                          </li>
+                          <li>사용자 웹 전체 퍼블리싱 및 기능 구현</li>
+                          <li>debounce를 이용한 실시간 검색 기능</li>
+                          <li>
+                            업체가 커스텀으로 설정한 주문 옵션 데이터를 ui화
+                          </li>
+                        </ul>
+                      </div>
+                      <div className=" space-y-1">
+                        <span className="ml-3 text-sm">기타</span>
+                        <ul className="list-[square]">
+                          <li>정기적인 회의를 통한 정책, 기능 설정 및 수정</li>
+                          <li>
+                            다른 역할의 개발자, 디자이너들과의 회의를 통한 개발
+                            환경, 방식 구축
+                          </li>
+                          <li>모노레포와 디자인 시스템에 대한 이해</li>
+                          <li>
+                            ec2, s3, codeDeploy, docker, github action을 통한
+                            배포 및 자동 배포 구현
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div>
                   <h3 className="font-semibold text-lg">
                     <a
                       target="_blank"
@@ -318,6 +379,7 @@ export default function Resume({ isMe = false }: ResumeProps) {
                   </h3>
                   <p>Next.js, Notion api를 이용한 개발 블로그</p>
                   <div className="flex gap-2 mt-2 flex-wrap">
+                    <Badge color="3178C6" label="TypeScript" />
                     <Badge color="000000" label="Next.js" />
                     <Badge color="06B6D4" label="tailwindcss" />
                     <Badge color="000000" label="Notion" />
@@ -371,6 +433,7 @@ export default function Resume({ isMe = false }: ResumeProps) {
                   </h3>
                   <p>한국투자 오픈 api를 이용한 코스피 주식 정보 서비스</p>
                   <div className="flex gap-2 mt-2 flex-wrap">
+                    <Badge color="3178C6" label="TypeScript" />
                     <Badge color="61DAFB" label="React" iconColor="black" />
                     <Badge color="DB7093" label="styled components" />
                     <Badge color="FF4154" label="React Query" />
