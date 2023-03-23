@@ -262,7 +262,7 @@ export const Block = async ({
     return (
       <>
         <div
-          className={`flex items-start min-w-0 mb-2 ${
+          className={`flex items-start min-w-0 mb-4 ${
             block?.type === "column_list"
               ? "flex-row justify-start gap-2"
               : "flex-col"
