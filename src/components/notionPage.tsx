@@ -367,10 +367,8 @@ export const Block = async ({
                 className="w-full p-4 rounded-lg bg-[rgb(247,_246,_243)] dark:bg-gray-700"
                 key={i}
               >
-                <pre className="w-full">
-                  <code className="w-full block whitespace-pre-wrap break-words">
-                    {el?.text?.content}
-                  </code>
+                <pre className="w-full overflow-y-auto">
+                  <code className="w-full block">{el?.text?.content}</code>
                 </pre>
               </div>
             ))}
