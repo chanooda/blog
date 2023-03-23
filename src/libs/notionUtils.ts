@@ -32,10 +32,20 @@ export const formatDate = (date: string) => {
   return date?.substring(0, 10);
 };
 
-type GetListStyle = (step: number) => CSSProperties | null;
-export const getListStyle: GetListStyle = (step) => {
-  if (step % 3 === 0) return { listStyle: "square" };
-  if (step % 3 === 2) return { listStyle: "circle" };
-  if (step % 3 === 1) return { listStyle: "initial" };
+type GetListStyle = (
+  type: "number" | "bullet",
+  step: number
+) => CSSProperties | null;
+export const getListStyle: GetListStyle = (type, step) => {
+  if (type === "bullet") {
+    if (step % 3 === 0) return { listStyle: "square" };
+    if (step % 3 === 2) return { listStyle: "circle" };
+    if (step % 3 === 1) return { listStyle: "initial" };
+  }
+  if (type === "number") {
+    if (step % 3 === 0) return { listStyle: "lower-roman" };
+    if (step % 3 === 2) return { listStyle: "lower-alpha" };
+    if (step % 3 === 1) return { listStyle: "decimal" };
+  }
   return null;
 };

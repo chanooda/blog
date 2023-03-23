@@ -6,7 +6,7 @@ import {
   getTextStyle,
 } from "@/libs/notionUtils";
 import { Client } from "@notionhq/client";
-import React, { Component, ComponentProps } from "react";
+import React, { ComponentProps, Fragment } from "react";
 
 type ValueOf<T> = T[keyof T];
 type BlockType =
@@ -18,7 +18,8 @@ type BlockType =
   | "heading_1"
   | "heading_2"
   | "heading_3"
-  | "code";
+  | "code"
+  | "numbered_list_item";
 type RichTextType = "text" | "mention" | "equation";
 type CoverType = "external" | "file";
 
@@ -70,6 +71,10 @@ export interface Block {
   archived: boolean;
   type: BlockType;
   paragraph?: {
+    rich_text: RichText[];
+    color: ColorType;
+  };
+  numbered_list_item?: {
     rich_text: RichText[];
     color: ColorType;
   };
@@ -193,122 +198,194 @@ interface BlockProps {
   block: Block;
   step?: number;
   parentType?: BlockType;
+  numberedList?: Block[];
 }
-export const Block = async ({ parentType, block, step = 1 }: BlockProps) => {
+export const Block = async ({
+  parentType,
+  block,
+  step = 1,
+  numberedList,
+}: BlockProps) => {
   const child = block?.has_children && ((await getData(block?.id)) as any);
-  const paragraph = block?.paragraph;
-  const bulletedListItem = block?.bulleted_list_item;
+  console.log(parentType);
   if (!block?.type) return null;
-  if (parentType !== "bulleted_list_item") step = 1;
-  return (
-    <>
-      <div
-        className={`flex items-start min-w-0 mb-2 ${
-          block?.type === "column_list"
-            ? "flex-row justify-start gap-2"
-            : "flex-col"
-        }`}
-        style={{
-          paddingLeft: step > 1 ? "25px" : "0px",
-        }}
-      >
-        {block?.type === "heading_1" && (
-          <div
-            className="w-full mb-2"
-            style={{ ...getColor(paragraph?.color) }}
-          >
-            <h1 className="text-3xl font-semibold">
-              {block?.heading_1?.rich_text?.map((el, i) => (
-                <RichText key={i} richText={el} />
-              ))}
-            </h1>
-          </div>
-        )}
-        {block?.type === "heading_2" && (
-          <div
-            className="w-full mb-2"
-            style={{ ...getColor(paragraph?.color) }}
-          >
-            <h1 className="text-2xl font-semibold">
-              {block?.heading_2?.rich_text?.map((el, i) => (
-                <RichText key={i} richText={el} />
-              ))}
-            </h1>
-          </div>
-        )}
-        {block?.type === "heading_3" && (
-          <div
-            className="w-full mb-2"
-            style={{ ...getColor(paragraph?.color) }}
-          >
-            <h1 className="text-xl font-semibold">
-              {block?.heading_3?.rich_text?.map((el, i) => (
-                <RichText key={i} richText={el} />
-              ))}
-            </h1>
-          </div>
-        )}
-        {block?.type === "image" && (
-          <div className="mb-2">
-            <img className="w-full" src={block?.image?.file?.url} alt={""} />
-          </div>
-        )}
-        {block?.type === "paragraph" && (
-          <div
-            className="w-full mb-2"
-            style={{ ...getColor(paragraph?.color) }}
-          >
-            {block?.paragraph?.rich_text?.map((el, i) => (
-              <RichText key={i} richText={el} />
-            ))}
-          </div>
-        )}
-        {block?.type === "bulleted_list_item" && (
-          <ul
-            className="whitespace-pre-wrap ml-7 space-y-2"
-            style={{
-              ...getColor(bulletedListItem?.color),
-              ...getListStyle(step),
-            }}
-          >
-            <li className={`w-full mb-2`}>
-              {block?.bulleted_list_item?.rich_text?.map((el, i) => (
-                <RichText key={i} richText={el} />
-              ))}
-            </li>
-          </ul>
-        )}
-        {block?.type === "divider" && (
-          <div className="w-full h-[0.5px] bg-gray-200 my-2" />
-        )}
-        {block?.type === "code" &&
-          block?.code?.rich_text?.map((el, i) => (
-            <div
-              className="w-full p-4 rounded-lg bg-[rgb(247,_246,_243)] dark:bg-gray-700"
-              key={i}
-            >
-              <pre className="w-full">
-                <code className="w-full block whitespace-pre-wrap break-words">
-                  {el?.text?.content}
-                </code>
-              </pre>
-            </div>
-          ))}
+  if (
+    (block?.type === "bulleted_list_item" &&
+      parentType !== "bulleted_list_item") ||
+    (block?.type === "numbered_list_item" &&
+      parentType !== "numbered_list_item")
+  )
+    step = 1;
+  let childNumberedList: Block[] = [];
+  console.log(step);
+  if (
+    (!numberedList || numberedList.length === 0) &&
+    block?.type === "numbered_list_item"
+  ) {
+    return (
+      <li key={block?.id} className={`w-full`}>
+        {block?.numbered_list_item?.rich_text?.map((el, i) => (
+          <RichText key={i} richText={el} />
+        ))}
         {child &&
-          child?.results.map((el: Block) => (
-            <>
-              {/* @ts-expect-error Async Server Component */}
-              <Block
-                parentType={block?.type}
-                step={step + 1}
-                key={el?.id}
-                block={el}
-              />
-            </>
-          ))}
-      </div>
-    </>
-  );
+          child?.results?.map((el: any, i: number) => {
+            if (el?.type === "numbered_list_item") {
+              childNumberedList.push(el);
+              if (
+                !child?.results[i + 1] ||
+                (child?.results[i + 1] &&
+                  (child?.results[i + 1] as any)?.type !== "numbered_list_item")
+              ) {
+                return (
+                  <Fragment key={el?.id}>
+                    {/* @ts-expect-error Async Server Component */}
+                    <Block
+                      parentType={block?.type}
+                      step={step + 1}
+                      block={el}
+                      numberedList={childNumberedList}
+                    />
+                  </Fragment>
+                );
+              }
+            } else
+              return (
+                <Fragment key={el?.id}>
+                  {/* @ts-expect-error Async Server Component */}
+                  <Block parentType={block?.type} step={step + 1} block={el} />
+                </Fragment>
+              );
+          })}
+      </li>
+    );
+  } else {
+    return (
+      <>
+        <div
+          className={`flex items-start min-w-0 mb-2 ${
+            block?.type === "column_list"
+              ? "flex-row justify-start gap-2"
+              : "flex-col"
+          }`}
+          style={{
+            paddingLeft: step > 1 ? "25px" : "0px",
+          }}
+        >
+          {block?.type === "heading_1" && (
+            <div
+              className="w-full"
+              style={{ ...getColor(block?.heading_1?.color) }}
+            >
+              <h1 className="text-3xl font-semibold">
+                {block?.heading_1?.rich_text?.map((el, i) => (
+                  <RichText key={i} richText={el} />
+                ))}
+              </h1>
+            </div>
+          )}
+          {block?.type === "heading_2" && (
+            <div
+              className="w-full"
+              style={{ ...getColor(block?.heading_2?.color) }}
+            >
+              <h1 className="text-2xl font-semibold">
+                {block?.heading_2?.rich_text?.map((el, i) => (
+                  <RichText key={i} richText={el} />
+                ))}
+              </h1>
+            </div>
+          )}
+          {block?.type === "heading_3" && (
+            <div
+              className="w-full"
+              style={{ ...getColor(block?.heading_3?.color) }}
+            >
+              <h1 className="text-xl font-semibold">
+                {block?.heading_3?.rich_text?.map((el, i) => (
+                  <RichText key={i} richText={el} />
+                ))}
+              </h1>
+            </div>
+          )}
+          {block?.type === "image" && (
+            <div
+              className={`${
+                parentType === "column_list" ? "max-w-[200px]" : ""
+              }`}
+            >
+              <img className="w-full" src={block?.image?.file?.url} />
+            </div>
+          )}
+          {block?.type === "paragraph" && (
+            <div
+              className="w-full"
+              style={{ ...getColor(block?.paragraph?.color) }}
+            >
+              {block?.paragraph?.rich_text?.map((el, i) => (
+                <RichText key={i} richText={el} />
+              ))}
+            </div>
+          )}
+          {/* 숫자 리스트 */}
+          {numberedList && numberedList?.length > 0 && (
+            <ul
+              className="whitespace-pre-wrap ml-5 space-y-2"
+              style={{
+                ...getColor(block?.numbered_list_item?.color),
+                ...getListStyle("number", step),
+              }}
+            >
+              {numberedList?.map((el) => (
+                <Fragment key={el?.id}>
+                  {/* @ts-expect-error Async Server Component */}
+                  <Block parentType={el?.type} block={el} step={step + 1} />
+                </Fragment>
+              ))}
+            </ul>
+          )}
+          {block?.type === "bulleted_list_item" && (
+            <ul
+              className="whitespace-pre-wrap ml-5 space-y-2"
+              style={{
+                ...getColor(block?.bulleted_list_item?.color),
+                ...getListStyle("bullet", step),
+              }}
+            >
+              <li className={`w-full`}>
+                {block?.bulleted_list_item?.rich_text?.map((el, i) => (
+                  <RichText key={i} richText={el} />
+                ))}
+              </li>
+            </ul>
+          )}
+          {block?.type === "divider" && (
+            <div className="w-full h-[0.5px] bg-gray-200 my-2" />
+          )}
+          {block?.type === "code" &&
+            block?.code?.rich_text?.map((el, i) => (
+              <div
+                className="w-full p-4 rounded-lg bg-[rgb(247,_246,_243)] dark:bg-gray-700"
+                key={i}
+              >
+                <pre className="w-full">
+                  <code className="w-full block whitespace-pre-wrap break-words">
+                    {el?.text?.content}
+                  </code>
+                </pre>
+              </div>
+            ))}
+          {block?.type !== "numbered_list_item" &&
+            child &&
+            child?.results.map((el: Block, i: number) => (
+              <Fragment key={el?.id}>
+                {/* @ts-expect-error Async Server Component */}
+                <Block parentType={block?.type} step={step + 1} block={el} />
+              </Fragment>
+            ))}
+        </div>
+      </>
+    );
+  }
 };
 
 // 노션 block 내의 구성 텍스트
@@ -323,7 +400,11 @@ export const RichText = ({ richText }: RichTextProps) => {
         target="_blank"
         rel="noreferrer noopener"
         className="whitespace-pre-wrap text-gray-500 underline"
-        href={richText?.href}
+        href={
+          richText?.href && richText?.href[0] === "/"
+            ? `/page${richText?.href}`
+            : richText?.href
+        }
         style={{
           wordBreak: "break-word",
         }}

@@ -19,7 +19,7 @@ async function getData() {
   return response;
 }
 
-export default async function page() {
+export default async function Project() {
   const data = await getData();
 
   return (
