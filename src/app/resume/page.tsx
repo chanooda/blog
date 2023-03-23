@@ -69,8 +69,8 @@ export default function Resume({ isMe = false }: ResumeProps) {
             {!isMe && (
               <div className="p-4 bg-gray-200 dark:bg-gray-700 rounded-xl">
                 <p className="text-sm">
-                  React, Typescript를 주력으로 개발 경력 1년차를 향해 가고있는
-                  신입 웹 개발자입니다.
+                  React, Typescript를 주력으로 하는 개발 경력 1년차 신입 웹
+                  개발자입니다.
                   <br />
                   <br />웹 프론트엔드 개발자로 첫 입사 후 한달 뒤 주요 신규
                   프로젝트에 참여하였습니다. 팀원과 소통하며 새로운 기술
@@ -305,6 +305,58 @@ export default function Resume({ isMe = false }: ResumeProps) {
           <div>
             <h2 className="text-2xl mb-2">사이드 프로젝트</h2>
             <ul className="list-disc space-y-8">
+              <li>
+                <div>
+                  <h3 className="font-semibold text-lg">
+                    <a
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      href="https://blog-lyart-six-70.vercel.app/"
+                    >
+                      개발 블로그
+                    </a>
+                  </h3>
+                  <p>Next.js, Notion api를 이용한 개발 블로그</p>
+                  <div className="flex gap-2 mt-2 flex-wrap">
+                    <Badge color="000000" label="Next.js" />
+                    <Badge color="06B6D4" label="tailwindcss" />
+                    <Badge color="000000" label="Notion" />
+                  </div>
+                  <ul className="list-[circle] mt-2 space-y-4">
+                    <li>
+                      <h4>역할</h4>
+                      <ul className="list-[square]">
+                        <li>총 1명 (개인 프로젝트)</li>
+                        <li>디자인, 프론트엔드</li>
+                      </ul>
+                    </li>
+                    <li className="space-y-2">
+                      <h4>상세 및 성과</h4>
+                      <div className=" space-y-1">
+                        <span className="ml-3 text-sm">프론트엔드</span>
+                        <ul className="list-[square]">
+                          <li>
+                            notion api를 이용하여 database, page의 정보를 가져옴
+                          </li>
+                          <li>
+                            notion api에서 제공하는 데이터를 바탕으로 Notion
+                            커스텀 컴포넌트 제작
+                          </li>
+                          <li>Next.js 13의 변경되거나 새로운 기능을 적용</li>
+                          <li>새롭게 추가된 ssr, ssg 방식 구현</li>
+                        </ul>
+                      </div>
+                      <div className=" space-y-1">
+                        <span className="ml-3 text-sm">기타</span>
+                        <ul className="list-[square]">
+                          <li>Next.js 13 Metadata를 이용한 seo 설정</li>
+                          <li>vercel deploy 기능을 이용한 자동배포</li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
               <li>
                 <div>
                   <h3 className="font-semibold text-lg">

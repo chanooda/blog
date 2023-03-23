@@ -2,6 +2,12 @@ import React, { ReactNode } from "react";
 import { Client } from "@notionhq/client";
 import Link from "next/link";
 import { MultiSelectListCard } from "@/components/notionPage";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "글 - 김찬우 개발 블로그",
+  description: "웹 개발자 김찬우의 글",
+};
 
 // 글 데이터베이스 가져오기
 async function getData() {

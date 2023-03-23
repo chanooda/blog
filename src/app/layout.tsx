@@ -5,7 +5,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "김찬우 개발 블로그",
-  description: "웹 개발자 김찬우 개발 블로그",
+  description: "웹 개발자 김찬우의 개발 블로그",
 };
 
 const notoSansKorea = Noto_Sans_KR({
@@ -28,6 +28,12 @@ export default function RootLayout({
       `;
   return (
     <html lang="ko" className="w-full h-full">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="c8HDgSkg-YFixY5XVB4WTyP1IZzh6A1dduLmqST9VBk"
+        />
+      </head>
       <body
         className={`${notoSansKorea.variable}
         font-sans w-full h-full bg-white dark:bg-gray-900 text-gray-700  dark:text-gray-300 overflow-hidden`}

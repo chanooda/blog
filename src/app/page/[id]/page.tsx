@@ -1,18 +1,41 @@
 import React, { Fragment } from "react";
 import { Client } from "@notionhq/client";
 import { Block, Cover, Properties, RichText } from "@/components/notionPage";
+import { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
 
-async function getData(id: string) {
+async function getBlocks(id: string) {
   const notion = new Client({ auth: process.env.NOTION_SECRET });
   const blocks = await notion.blocks.children.list({
     block_id: id,
   });
+
+  return blocks;
+}
+
+async function getPage(id: string) {
+  const notion = new Client({ auth: process.env.NOTION_SECRET });
   const page = await notion.pages.retrieve({
     page_id: id,
   });
-  return { blocks, page };
+  return page;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
+  const page = (await getPage(params.id)) as any;
+  return {
+    title:
+      page?.properties?.이름?.title[0]?.text?.content ||
+      page?.properties?.Name?.title[0]?.text?.content,
+    description:
+      page?.properties?.이름?.title[0]?.text?.content ||
+      page?.properties?.Name?.title[0]?.text?.content,
+  };
 }
 
 export default async function NotionPage({
@@ -20,7 +43,9 @@ export default async function NotionPage({
 }: {
   params: { id: string };
 }) {
-  const { blocks, page } = await getData(params.id);
+  const blocksData = getBlocks(params?.id);
+  const pageData = getPage(params?.id);
+  const [blocks, page] = await Promise.all([blocksData, pageData]);
 
   let numberedList: Block[] = [];
 

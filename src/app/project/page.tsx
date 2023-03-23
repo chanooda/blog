@@ -2,8 +2,14 @@ import React from "react";
 import Link from "next/link";
 import { Client } from "@notionhq/client";
 import { MultiSelectList } from "@/components/notionPage";
+import { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "프로젝트 - 김찬우 개발 블로그",
+  description: "웹 개발자 김찬우의 프로젝트",
+};
 
 async function getData() {
   const notion = new Client({ auth: process.env.NOTION_SECRET });
