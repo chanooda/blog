@@ -9,6 +9,15 @@ export const metadata: Metadata = {
   keywords:
     "김찬우, 개발블로그, 개발 블로그, 웹개발자, 웹 개발자, 웹 개발자 김찬우, 웹개발자 김찬우, 웹개발자김찬우",
   authors: { name: "김찬우" },
+  openGraph: {
+    siteName: "김찬우 개발 블로그",
+    description: "김찬우의 프로젝트와 글이 담긴 개발 블로그",
+    url: "https://blog-lyart-six-70.vercel.app",
+    type: "website",
+    images:
+      "https://raw.githubusercontent.com/chanooda/blog/main/public/thumbnail.PNG",
+    locale: "ko_KR",
+  },
 };
 
 const notoSansKorea = Noto_Sans_KR({
@@ -36,16 +45,6 @@ export default function RootLayout({
           name="google-site-verification"
           content="c8HDgSkg-YFixY5XVB4WTyP1IZzh6A1dduLmqST9VBk"
         />
-        <meta name="og:site_name" content="김찬우 개발 블로그" />
-        <meta
-          name="og:description"
-          content="김찬우의 프로젝트와 글이 담긴 개발 블로그"
-        />
-        <meta name="og:type" content="website" />
-        <meta name="og:url" content="https://blog-lyart-six-70.vercel.app" />
-        <meta name="og:image" content="/thumnnail.png" />
-        <meta property="og:site_name" content="김찬우의 개발 블로그"></meta>
-        <meta property="og:locale" content="ko_KR"></meta>
       </head>
       <body
         className={`${notoSansKorea.variable}

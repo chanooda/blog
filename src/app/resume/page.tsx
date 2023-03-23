@@ -350,6 +350,7 @@ export default function Resume({ isMe = false }: ResumeProps) {
                         <span className="ml-3 text-sm">기타</span>
                         <ul className="list-[square]">
                           <li>Next.js 13 Metadata를 이용한 seo 설정</li>
+                          <li>google search console을 사용한 seo 설정</li>
                           <li>vercel deploy 기능을 이용한 자동배포</li>
                         </ul>
                       </div>
