@@ -39,15 +39,17 @@ export default async function Write({
       <div className="w-full flex-col flex gap-4">
         {data?.results?.map((el: any) => (
           <Link key={el?.id} href={`/page/${el?.id}`}>
-            <div className="w-full flex h-[100px] gap-4 cursor-pointer">
+            <div className="w-full flex gap-4 cursor-pointer">
               {el?.properties?.image?.files[0] ? (
-                <img
-                  className="w-[30%] min-w-[100px] max-w-[200px] object-cover  rounded-md shadow-md"
-                  src={el?.properties?.image?.files[0]?.file?.url}
-                  alt="대표 이미지"
-                />
+                <div className="w-[30%] min-w-[100px] max-w-[300px] rounded-md shadow-md aspect-[1.5/0.8] overflow-hidden">
+                  <img
+                    className="object-cover w-full h-full"
+                    src={el?.properties?.image?.files[0]?.file?.url}
+                    alt="대표 이미지"
+                  />
+                </div>
               ) : (
-                <div className="w-[30%] min-w-[100px] max-w-[200px] bg-slate-100 flex items-center dark:bg-slate-600 justify-center shadow-md rounded-md">
+                <div className="w-[30%] min-w-[100px] max-w-[300px] aspect-[1.5/0.8] overflow-hidden bg-slate-100 flex items-center dark:bg-slate-600 justify-center shadow-md rounded-md">
                   <HiPencil className="text-gray-400 text-5xl" />
                 </div>
               )}

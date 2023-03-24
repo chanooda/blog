@@ -197,6 +197,7 @@ async function getData(id: string) {
 interface BlockProps {
   block: Block;
   step?: number;
+  listStep?: number;
   parentType?: BlockType;
   numberedList?: Block[];
 }
@@ -204,6 +205,7 @@ export const Block = async ({
   parentType,
   block,
   step = 1,
+  listStep = 1,
   numberedList,
 }: BlockProps) => {
   const child = block?.has_children && ((await getData(block?.id)) as any);
@@ -215,9 +217,8 @@ export const Block = async ({
     (block?.type === "numbered_list_item" &&
       parentType !== "numbered_list_item")
   )
-    step = 1;
+    listStep = 1;
   let childNumberedList: Block[] = [];
-  console.log(step);
   if (
     (!numberedList || numberedList.length === 0) &&
     block?.type === "numbered_list_item"
@@ -244,6 +245,7 @@ export const Block = async ({
                       step={step + 1}
                       block={el}
                       numberedList={childNumberedList}
+                      listStep={listStep + 1}
                     />
                   </Fragment>
                 );
@@ -252,7 +254,12 @@ export const Block = async ({
               return (
                 <Fragment key={el?.id}>
                   {/* @ts-expect-error Async Server Component */}
-                  <Block parentType={block?.type} step={step + 1} block={el} />
+                  <Block
+                    parentType={block?.type}
+                    step={step + 1}
+                    block={el}
+                    listStep={listStep + 1}
+                  />
                 </Fragment>
               );
           })}
@@ -268,7 +275,8 @@ export const Block = async ({
               : "flex-col"
           }`}
           style={{
-            paddingLeft: step > 1 ? "25px" : "0px",
+            paddingLeft:
+              step > 1 && parentType !== "column_list" ? "25px" : "0px",
           }}
         >
           {block?.type === "heading_1" && (
@@ -332,23 +340,28 @@ export const Block = async ({
               className="whitespace-pre-wrap ml-5 space-y-2"
               style={{
                 ...getColor(block?.numbered_list_item?.color),
-                ...getListStyle("number", step),
+                ...getListStyle("number", listStep),
               }}
             >
               {numberedList?.map((el) => (
                 <Fragment key={el?.id}>
                   {/* @ts-expect-error Async Server Component */}
-                  <Block parentType={el?.type} block={el} step={step + 1} />
+                  <Block
+                    parentType={el?.type}
+                    block={el}
+                    step={step + 1}
+                    listStep={listStep + 1}
+                  />
                 </Fragment>
               ))}
             </ul>
           )}
           {block?.type === "bulleted_list_item" && (
             <ul
-              className="whitespace-pre-wrap ml-5 space-y-2"
+              className="whitespace-pre-wrap pl-5 space-y-2"
               style={{
                 ...getColor(block?.bulleted_list_item?.color),
-                ...getListStyle("bullet", step),
+                ...getListStyle("bullet", listStep),
               }}
             >
               <li className={`w-full`}>
@@ -377,7 +390,12 @@ export const Block = async ({
             child?.results.map((el: Block, i: number) => (
               <Fragment key={el?.id}>
                 {/* @ts-expect-error Async Server Component */}
-                <Block parentType={block?.type} step={step + 1} block={el} />
+                <Block
+                  parentType={block?.type}
+                  step={step + 1}
+                  block={el}
+                  listStep={listStep + 1}
+                />
               </Fragment>
             ))}
         </div>

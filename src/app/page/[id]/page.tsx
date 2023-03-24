@@ -2,24 +2,33 @@ import React, { Fragment } from "react";
 import { Client } from "@notionhq/client";
 import { Block, Cover, Properties, RichText } from "@/components/notionPage";
 import { Metadata } from "next";
+import NotFound from "@/app/not-found";
 
 export const dynamic = "force-dynamic";
 
 async function getBlocks(id: string) {
-  const notion = new Client({ auth: process.env.NOTION_SECRET });
-  const blocks = await notion.blocks.children.list({
-    block_id: id,
-  });
-
-  return blocks;
+  try {
+    const notion = new Client({ auth: process.env.NOTION_SECRET });
+    const blocks = await notion.blocks.children.list({
+      block_id: id,
+    });
+    return blocks;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
 }
 
 async function getPage(id: string) {
-  const notion = new Client({ auth: process.env.NOTION_SECRET });
-  const page = await notion.pages.retrieve({
-    page_id: id,
-  });
-  return page;
+  try {
+    const notion = new Client({ auth: process.env.NOTION_SECRET });
+    const page = await notion.pages.retrieve({
+      page_id: id,
+    });
+    return page;
+  } catch (err) {
+    return null;
+  }
 }
 
 export async function generateMetadata({
@@ -48,38 +57,40 @@ export default async function NotionPage({
   const [blocks, page] = await Promise.all([blocksData, pageData]);
 
   let numberedList: Block[] = [];
-
-  return (
-    <div className="w-full">
-      <Cover cover={(page as any)?.cover} />
-      <Properties properties={(page as any)?.properties} />
-      <div className="w-full flex flex-col">
-        {blocks?.results?.map((el: any, i) => {
-          if (el?.type === "numbered_list_item") {
-            numberedList.push(el);
-            if (
-              !blocks?.results[i + 1] ||
-              (blocks?.results[i + 1] &&
-                (blocks?.results[i + 1] as any)?.type !== "numbered_list_item")
-            ) {
+  if (!blocks || !page) return <NotFound />;
+  else
+    return (
+      <div className="w-full">
+        <Cover cover={(page as any)?.cover} />
+        <Properties properties={(page as any)?.properties} />
+        <div className="w-full flex flex-col px-40">
+          {blocks?.results?.map((el: any, i) => {
+            if (el?.type === "numbered_list_item") {
+              numberedList.push(el);
+              if (
+                !blocks?.results[i + 1] ||
+                (blocks?.results[i + 1] &&
+                  (blocks?.results[i + 1] as any)?.type !==
+                    "numbered_list_item")
+              ) {
+                return (
+                  <Fragment key={el?.id}>
+                    {/* @ts-expect-error Async Server Component */}
+                    <Block block={el as Block} numberedList={numberedList} />
+                  </Fragment>
+                );
+              }
+            } else {
+              numberedList = [];
               return (
                 <Fragment key={el?.id}>
                   {/* @ts-expect-error Async Server Component */}
-                  <Block block={el as Block} numberedList={numberedList} />
+                  <Block block={el as Block} />
                 </Fragment>
               );
             }
-          } else {
-            numberedList = [];
-            return (
-              <Fragment key={el?.id}>
-                {/* @ts-expect-error Async Server Component */}
-                <Block block={el as Block} />
-              </Fragment>
-            );
-          }
-        })}
+          })}
+        </div>
       </div>
-    </div>
-  );
+    );
 }
