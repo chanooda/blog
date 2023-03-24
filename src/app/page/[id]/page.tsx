@@ -63,7 +63,7 @@ export default async function NotionPage({
       <div className="w-full">
         <Cover cover={(page as any)?.cover} />
         <Properties properties={(page as any)?.properties} />
-        <div className="w-full flex flex-col px-40">
+        <div className="w-full flex flex-col max-w-[900px] mx-auto">
           {blocks?.results?.map((el: any, i) => {
             if (el?.type === "numbered_list_item") {
               numberedList.push(el);
