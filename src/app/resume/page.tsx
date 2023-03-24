@@ -60,7 +60,7 @@ export default function Resume({ isMe = false }: ResumeProps) {
                 <a
                   target="_blank"
                   rel="noreferrer noopener"
-                  href="https://blog-lyart-six-70.vercel.app/"
+                  href="https://blog.chanoo.org"
                 >
                   개발 블로그
                 </a>

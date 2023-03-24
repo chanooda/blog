@@ -17,7 +17,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["var(--noto-sans-korea)", ...fontFamily.sans],
+        sans: ["var(--font-noto-kr)", ...fontFamily.sans],
       },
     },
   },

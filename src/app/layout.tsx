@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 const noto_sans_korea = Noto_Sans_KR({
   subsets: ["latin"],
   weight: "400",
-  variable: "--noto-sans-korea",
+  variable: "--font-noto-kr",
 });
 export default function RootLayout({
   children,
@@ -38,7 +38,7 @@ export default function RootLayout({
         }
       `;
   return (
-    <html lang="ko" className={`w-full h-full ${noto_sans_korea.className}`}>
+    <html lang="ko" className={`w-full h-full`}>
       <head>
         <meta
           name="google-site-verification"
@@ -46,7 +46,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`font-sans w-full h-full bg-white dark:bg-gray-900 text-gray-700  dark:text-gray-300 overflow-hidden`}
+        className={`font-sans w-full h-full bg-white dark:bg-gray-900 text-gray-700  dark:text-gray-300 overflow-hidden ${noto_sans_korea.variable} font-sans`}
       >
         <script
           dangerouslySetInnerHTML={{
