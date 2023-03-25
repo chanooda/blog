@@ -1,187 +1,20 @@
-import { ColorType, notionColorCodes } from "@/libs/notionColorCode";
+import { notionColorCodes } from "@/libs/notionColorCode";
 import {
   formatDate,
   getColor,
   getListStyle,
   getTextStyle,
 } from "@/libs/notionUtils";
+import {
+  Block,
+  BlockType,
+  Cover,
+  Properties,
+  RichText,
+} from "@/types/notionType";
 import { Client } from "@notionhq/client";
 import React, { ComponentProps, Fragment } from "react";
-
-type ValueOf<T> = T[keyof T];
-type BlockType =
-  | "paragraph"
-  | "bulleted_list_item"
-  | "image"
-  | "column_list"
-  | "divider"
-  | "heading_1"
-  | "heading_2"
-  | "heading_3"
-  | "code"
-  | "numbered_list_item";
-type RichTextType = "text" | "mention" | "equation";
-type CoverType = "external" | "file";
-
-export interface Annotations {
-  bold: boolean;
-  italic: boolean;
-  strikethrough: boolean;
-  underline: boolean;
-  code: boolean;
-  color: ColorType;
-}
-
-export interface RichText {
-  type: RichTextType;
-  text?: {
-    content: string;
-    link: {};
-  };
-  mention?: {
-    content: string;
-    link: {};
-  };
-  equation?: {
-    expression: string;
-  };
-  annotations: Annotations;
-  plain_text: string;
-  href: string;
-}
-
-export interface Block {
-  object: string;
-  id: string;
-  parent: {
-    type: string;
-    page_id: string;
-  };
-  created_time: string;
-  last_edited_time: string;
-  created_by: {
-    object: string;
-    id: string;
-  };
-  last_edited_by: {
-    object: string;
-    id: string;
-  };
-  has_children: boolean;
-  archived: boolean;
-  type: BlockType;
-  paragraph?: {
-    rich_text: RichText[];
-    color: ColorType;
-  };
-  numbered_list_item?: {
-    rich_text: RichText[];
-    color: ColorType;
-  };
-  bulleted_list_item?: {
-    rich_text: RichText[];
-    color: ColorType;
-  };
-  image?: {
-    caption: [];
-    type: CoverType;
-    file: {
-      url: string;
-      expiry_time: string;
-    };
-  };
-  divider?: {};
-  heading_1?: { rich_text: RichText[]; color: ColorType };
-  heading_2?: { rich_text: RichText[]; color: ColorType };
-  heading_3?: { rich_text: RichText[]; color: ColorType };
-  code?: { rich_text: RichText[]; language: string };
-}
-
-export interface Properties {
-  "Created time": {
-    id: string;
-    type: string;
-    created_time: string;
-  };
-  "Multi-select"?: {
-    id: string;
-    type: string;
-    multi_select: {
-      id: string;
-      name: string;
-      color: ColorType;
-    }[];
-  };
-  tags?: {
-    id: string;
-    type: string;
-    multi_select: {
-      id: string;
-      name: string;
-      color: ColorType;
-    }[];
-  };
-  category?: {
-    id: string;
-    type: string;
-    multi_select: {
-      id: string;
-      name: string;
-      color: ColorType;
-    }[];
-  };
-  Text?: {
-    id: string;
-    type: string;
-    rich_text: RichText[];
-  };
-  이름?: {
-    id: string;
-    type: string;
-    title: RichText[];
-  };
-  Name?: {
-    id: string;
-    type: string;
-    title: RichText[];
-  };
-}
-
-export interface Page {
-  object: string;
-  id: string;
-  created_time: string;
-  last_edited_time: string;
-  created_by: {
-    object: string;
-    id: string;
-  };
-  last_edited_by: {
-    object: string;
-    id: string;
-  };
-  cover: {
-    type: string;
-    file: {
-      url: string;
-      expiry_time: string;
-    };
-  };
-  icon: null;
-  parent: {
-    type: string;
-    database_id: string;
-  };
-  archived: false;
-  properties: Properties;
-}
-
-type Cover = CoverTypeObj & CoverUrl;
-
-type CoverTypeObj = { type: CoverType };
-type CoverUrl = {
-  [key in CoverType]: { url: string };
-};
+import { NotionCode } from "./notionClient";
 
 // 자식 블럭 가져오기
 async function getData(id: string) {
@@ -201,7 +34,7 @@ interface BlockProps {
   parentType?: BlockType;
   numberedList?: Block[];
 }
-export const Block = async ({
+export const NotionBlock = async ({
   parentType,
   block,
   step = 1,
@@ -226,7 +59,7 @@ export const Block = async ({
     return (
       <li key={block?.id} className={`w-full`}>
         {block?.numbered_list_item?.rich_text?.map((el, i) => (
-          <RichText key={i} richText={el} />
+          <NotionRichText key={i} richText={el} />
         ))}
         {child &&
           child?.results?.map((el: any, i: number) => {
@@ -286,7 +119,7 @@ export const Block = async ({
             >
               <h1 className="text-3xl font-semibold">
                 {block?.heading_1?.rich_text?.map((el, i) => (
-                  <RichText key={i} richText={el} />
+                  <NotionRichText key={i} richText={el} />
                 ))}
               </h1>
             </div>
@@ -298,7 +131,7 @@ export const Block = async ({
             >
               <h1 className="text-2xl font-semibold">
                 {block?.heading_2?.rich_text?.map((el, i) => (
-                  <RichText key={i} richText={el} />
+                  <NotionRichText key={i} richText={el} />
                 ))}
               </h1>
             </div>
@@ -310,7 +143,7 @@ export const Block = async ({
             >
               <h1 className="text-xl font-semibold">
                 {block?.heading_3?.rich_text?.map((el, i) => (
-                  <RichText key={i} richText={el} />
+                  <NotionRichText key={i} richText={el} />
                 ))}
               </h1>
             </div>
@@ -330,7 +163,7 @@ export const Block = async ({
               style={{ ...getColor(block?.paragraph?.color) }}
             >
               {block?.paragraph?.rich_text?.map((el, i) => (
-                <RichText key={i} richText={el} />
+                <NotionRichText key={i} richText={el} />
               ))}
             </div>
           )}
@@ -366,7 +199,7 @@ export const Block = async ({
             >
               <li className={`w-full`}>
                 {block?.bulleted_list_item?.rich_text?.map((el, i) => (
-                  <RichText key={i} richText={el} />
+                  <NotionRichText key={i} richText={el} />
                 ))}
               </li>
             </ul>
@@ -374,23 +207,13 @@ export const Block = async ({
           {block?.type === "divider" && (
             <div className="w-full h-[0.5px] bg-gray-200 my-2" />
           )}
-          {block?.type === "code" &&
-            block?.code?.rich_text?.map((el, i) => (
-              <div
-                className="w-full p-4 rounded-lg bg-[rgb(247,_246,_243)] dark:bg-gray-700"
-                key={i}
-              >
-                <pre className="w-full overflow-y-auto">
-                  <code className="w-full block">{el?.text?.content}</code>
-                </pre>
-              </div>
-            ))}
+          {block?.type === "code" && <NotionCode block={block} />}
           {block?.type !== "numbered_list_item" &&
             child &&
             child?.results.map((el: Block, i: number) => (
               <Fragment key={el?.id}>
                 {/* @ts-expect-error Async Server Component */}
-                <Block
+                <NotionBlock
                   parentType={block?.type}
                   step={step + 1}
                   block={el}
@@ -408,7 +231,7 @@ export const Block = async ({
 interface RichTextProps {
   richText: RichText;
 }
-export const RichText = ({ richText }: RichTextProps) => {
+export const NotionRichText = ({ richText }: RichTextProps) => {
   if (!richText?.type) return null;
   if (richText?.type && richText?.href) {
     return (
@@ -459,7 +282,7 @@ export const RichText = ({ richText }: RichTextProps) => {
 interface PropertiesProps {
   properties: Properties;
 }
-export const Properties = ({ properties }: PropertiesProps) => {
+export const NotionProperties = ({ properties }: PropertiesProps) => {
   return (
     <div className="mb-20 space-y-2 w-full mt-8">
       <h1 className="text-4xl">
@@ -542,7 +365,7 @@ export const MultiSelectListCard = ({
 interface CoverProps {
   cover: Cover;
 }
-export const Cover = ({ cover }: CoverProps) => {
+export const NotionCover = ({ cover }: CoverProps) => {
   if (!cover) return null;
   else
     return (

@@ -1,8 +1,13 @@
 import React, { Fragment } from "react";
 import { Client } from "@notionhq/client";
-import { Block, Cover, Properties, RichText } from "@/components/notionPage";
+import {
+  NotionBlock,
+  NotionCover,
+  NotionProperties,
+} from "@/components/notionPage";
 import { Metadata } from "next";
 import NotFound from "@/app/not-found";
+import { Block } from "@/types/notionType";
 
 export const dynamic = "force-dynamic";
 
@@ -12,6 +17,7 @@ async function getBlocks(id: string) {
     const blocks = await notion.blocks.children.list({
       block_id: id,
     });
+
     return blocks;
   } catch (err) {
     console.log(err);
@@ -61,8 +67,8 @@ export default async function NotionPage({
   else
     return (
       <div className="w-full">
-        <Cover cover={(page as any)?.cover} />
-        <Properties properties={(page as any)?.properties} />
+        <NotionCover cover={(page as any)?.cover} />
+        <NotionProperties properties={(page as any)?.properties} />
         <div className="w-full flex flex-col max-w-[900px] mx-auto">
           {blocks?.results?.map((el: any, i) => {
             if (el?.type === "numbered_list_item") {
@@ -76,7 +82,10 @@ export default async function NotionPage({
                 return (
                   <Fragment key={el?.id}>
                     {/* @ts-expect-error Async Server Component */}
-                    <Block block={el as Block} numberedList={numberedList} />
+                    <NotionBlock
+                      block={el as Block}
+                      numberedList={numberedList}
+                    />
                   </Fragment>
                 );
               }
@@ -85,7 +94,7 @@ export default async function NotionPage({
               return (
                 <Fragment key={el?.id}>
                   {/* @ts-expect-error Async Server Component */}
-                  <Block block={el as Block} />
+                  <NotionBlock block={el as Block} />
                 </Fragment>
               );
             }

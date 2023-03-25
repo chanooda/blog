@@ -1,28 +1,4 @@
-import { CSSProperties } from "react";
-
-export type ColorType =
-  | "gray_background"
-  | "brown_background"
-  | "orange_background"
-  | "yellow_background"
-  | "green_background"
-  | "blue_background"
-  | "purple_background"
-  | "pink_background"
-  | "red_background"
-  | "gray"
-  | "brown"
-  | "orange"
-  | "yellow"
-  | "green"
-  | "blue"
-  | "purple"
-  | "pink"
-  | "red";
-
-type NotionColorCodes = {
-  [key in ColorType]: CSSProperties["color"];
-};
+import { NotionColorCodes } from "@/types/notionType";
 
 export const notionColorCodes: NotionColorCodes = {
   gray_background: "#F1F1EF",
