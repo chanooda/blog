@@ -1,6 +1,6 @@
-import { Annotations } from "@/components/notionPage";
+import { Annotations, ColorType } from "@/types/notionType";
 import { CSSProperties } from "react";
-import { ColorType, notionColorCodes } from "./notionColorCode";
+import { notionColorCodes } from "./notionColorCode";
 
 type GetColor = (colorCode?: ColorType) => CSSProperties | null;
 export const getColor: GetColor = (colorCode) => {

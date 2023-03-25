@@ -6,7 +6,11 @@ import { HiPencil } from "react-icons/hi";
 import { formatDate } from "@/libs/notionUtils";
 import WriteNav from "@/components/writeNav";
 
+export const dynamic = "force-static";
+export const revalidate = 1800;
+
 async function getData(category: string, next_cursor: string) {
+  console.log("asdasd");
   const notion = new Client({ auth: process.env.NOTION_SECRET });
   const response = await notion.databases.query({
     database_id: process.env.NOTION_WRITE_DB_ID as string,

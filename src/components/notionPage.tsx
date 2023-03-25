@@ -73,7 +73,7 @@ export const NotionBlock = async ({
                 return (
                   <Fragment key={el?.id}>
                     {/* @ts-expect-error Async Server Component */}
-                    <Block
+                    <NotionBlock
                       parentType={block?.type}
                       step={step + 1}
                       block={el}
@@ -87,7 +87,7 @@ export const NotionBlock = async ({
               return (
                 <Fragment key={el?.id}>
                   {/* @ts-expect-error Async Server Component */}
-                  <Block
+                  <NotionBlock
                     parentType={block?.type}
                     step={step + 1}
                     block={el}
@@ -179,7 +179,7 @@ export const NotionBlock = async ({
               {numberedList?.map((el) => (
                 <Fragment key={el?.id}>
                   {/* @ts-expect-error Async Server Component */}
-                  <Block
+                  <NotionBlock
                     parentType={el?.type}
                     block={el}
                     step={step + 1}

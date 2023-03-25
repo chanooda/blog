@@ -9,7 +9,8 @@ import { Metadata } from "next";
 import NotFound from "@/app/not-found";
 import { Block } from "@/types/notionType";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
+export const revalidate = 1800;
 
 async function getBlocks(id: string) {
   try {
