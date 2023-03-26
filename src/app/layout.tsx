@@ -44,6 +44,7 @@ export default function RootLayout({
           name="google-site-verification"
           content="c8HDgSkg-YFixY5XVB4WTyP1IZzh6A1dduLmqST9VBk"
         />
+        <link rel="shortcut icon" href="/favicon.ico" />
       </head>
       <body
         className={`font-sans w-full h-full bg-white dark:bg-gray-900 text-gray-700  dark:text-gray-300 overflow-hidden ${noto_sans_korea.variable} font-sans`}
