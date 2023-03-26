@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     "김찬우, 개발블로그, 개발 블로그, 웹개발자, 웹 개발자, 웹 개발자 김찬우, 웹개발자 김찬우, 웹개발자김찬우",
   authors: { name: "김찬우" },
   openGraph: {
+    title: "김찬우 개발 블로그",
     siteName: "김찬우 개발 블로그",
     description: "김찬우의 프로젝트와 글이 담긴 개발 블로그",
     url: "https://blog-lyart-six-70.vercel.app",
