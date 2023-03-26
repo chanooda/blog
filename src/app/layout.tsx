@@ -45,6 +45,10 @@ export default function RootLayout({
           name="google-site-verification"
           content="c8HDgSkg-YFixY5XVB4WTyP1IZzh6A1dduLmqST9VBk"
         />
+        <meta
+          name="naver-site-verification"
+          content="c40bb5936a2380744bf41b3d493e530ef12deb04"
+        />
         <link rel="shortcut icon" href="/favicon.ico" />
       </head>
       <body
