@@ -10,7 +10,6 @@ export const dynamic = "force-static";
 export const revalidate = 1800;
 
 async function getData(category: string, next_cursor: string) {
-  console.log("asdasd");
   const notion = new Client({ auth: process.env.NOTION_SECRET });
   const response = await notion.databases.query({
     database_id: process.env.NOTION_WRITE_DB_ID as string,
@@ -37,7 +36,6 @@ export default async function Write({
   params: { category: string; next_cursor: string };
 }) {
   const data = await getData(params.category, params.next_cursor);
-  console.log(params);
   return (
     <div className="w-full pb-8">
       <div className="w-full flex-col flex gap-4">

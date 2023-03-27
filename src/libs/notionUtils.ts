@@ -24,6 +24,7 @@ export const getTextStyle: GetTextStyle = (annotations) => {
       borderRadius: "3px",
       background: "rgba(135,131,120,0.15)",
       padding: "0px 4px",
+      color: "#eb5757",
     }),
   };
 };

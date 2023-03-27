@@ -42,7 +42,6 @@ export const NotionBlock = async ({
   numberedList,
 }: BlockProps) => {
   const child = block?.has_children && ((await getData(block?.id)) as any);
-  console.log(parentType);
   if (!block?.type) return null;
   if (
     (block?.type === "bulleted_list_item" &&
@@ -102,7 +101,7 @@ export const NotionBlock = async ({
     return (
       <>
         <div
-          className={`flex items-start min-w-0 mb-4 ${
+          className={`w-full flex items-start min-w-0 mb-2 ${
             block?.type === "column_list"
               ? "flex-row justify-start gap-2"
               : "flex-col"
@@ -170,7 +169,7 @@ export const NotionBlock = async ({
           {/* 숫자 리스트 */}
           {numberedList && numberedList?.length > 0 && (
             <ul
-              className="whitespace-pre-wrap ml-5 space-y-2"
+              className="mb-2 whitespace-pre-wrap ml-5 space-y-2"
               style={{
                 ...getColor(block?.numbered_list_item?.color),
                 ...getListStyle("number", listStep),
@@ -191,7 +190,7 @@ export const NotionBlock = async ({
           )}
           {block?.type === "bulleted_list_item" && (
             <ul
-              className="whitespace-pre-wrap pl-5 space-y-2"
+              className="mb-2 whitespace-pre-wrap pl-5 space-y-2"
               style={{
                 ...getColor(block?.bulleted_list_item?.color),
                 ...getListStyle("bullet", listStep),
@@ -232,6 +231,7 @@ interface RichTextProps {
   richText: RichText;
 }
 export const NotionRichText = ({ richText }: RichTextProps) => {
+  console.log(richText);
   if (!richText?.type) return null;
   if (richText?.type && richText?.href) {
     return (
