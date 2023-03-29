@@ -3,8 +3,8 @@ import { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-// export const dynamic = "force-static";
-// export const revalidate = 1800;
+export const dynamic = "force-static";
+export const revalidate = 1800;
 
 export const metadata: Metadata = {
   title: "김찬우 개발 블로그",
