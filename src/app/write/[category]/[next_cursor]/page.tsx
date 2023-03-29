@@ -1,9 +1,6 @@
 import React from "react";
 import Write from "../page";
 
-export const dynamic = "force-static";
-export const revalidate = 1800;
-
 export default async function Page({
   params,
 }: {
