@@ -5,9 +5,6 @@ const nextConfig = {
     fontLoaders: [
       { loader: "next/font/google", options: { subsets: ["latin"] } },
     ],
-    images: {
-      domains: ["s3.us-west-2.amazonaws.com"],
-    },
   },
 };
 

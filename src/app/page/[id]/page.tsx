@@ -9,9 +9,6 @@ import { Metadata } from "next";
 import NotFound from "@/app/not-found";
 import { Block } from "@/types/notionType";
 
-export const dynamic = "force-static";
-export const revalidate = 1800;
-
 async function getBlocks(id: string) {
   try {
     const notion = new Client({ auth: process.env.NOTION_SECRET });
@@ -71,7 +68,7 @@ export default async function NotionPage({
         <NotionCover cover={(page as any)?.cover} />
         <NotionProperties properties={(page as any)?.properties} />
         <div className="w-full flex flex-col max-w-[900px] mx-auto">
-          {blocks?.results?.map((el: any, i) => {
+          {blocks?.results?.map((el: any, i: any) => {
             if (el?.type === "numbered_list_item") {
               numberedList.push(el);
               if (

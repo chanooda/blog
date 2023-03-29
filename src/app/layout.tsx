@@ -1,7 +1,10 @@
 import { Header } from "@/components/layout";
 import { Metadata } from "next";
-import { Noto_Sans_KR } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+
+// export const dynamic = "force-static";
+// export const revalidate = 1800;
 
 export const metadata: Metadata = {
   title: "김찬우 개발 블로그",
@@ -21,11 +24,10 @@ export const metadata: Metadata = {
   },
 };
 
-const noto_sans_korea = Noto_Sans_KR({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-noto-kr",
+const noto_sans_korea = localFont({
+  src: "../assets/font/NotoSansKR.woff2",
 });
+
 export default function RootLayout({
   children,
 }: {
@@ -39,7 +41,7 @@ export default function RootLayout({
         }
       `;
   return (
-    <html lang="ko" className={`w-full h-full`}>
+    <html lang="ko" className={`w-full h-full ${noto_sans_korea.className} `}>
       <head>
         <meta
           name="google-site-verification"
@@ -52,7 +54,7 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon.ico" />
       </head>
       <body
-        className={`font-sans w-full h-full bg-white dark:bg-gray-900 text-gray-700  dark:text-gray-300 overflow-hidden ${noto_sans_korea.variable} font-sans`}
+        className={`w-full h-full bg-white dark:bg-gray-900 text-gray-700  dark:text-gray-300 overflow-hidden`}
       >
         <script
           dangerouslySetInnerHTML={{

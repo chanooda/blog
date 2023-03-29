@@ -16,9 +16,6 @@ module.exports = {
           main: "#d2dae2",
         },
       },
-      fontFamily: {
-        sans: ["var(--font-noto-kr)", ...fontFamily.sans],
-      },
     },
   },
   plugins: [],

@@ -324,8 +324,11 @@ export default function Resume({ isMe = false }: ResumeProps) {
                     <li>
                       <h4>역할</h4>
                       <ul className="list-[square]">
-                        <li>총 1명 (개인 프로젝트)</li>
-                        <li>디자인, 프론트엔드</li>
+                        <li>
+                          총 5명 (디자이너 1, 프론트엔드 2, 백엔드 1, 안드로이드
+                          1)
+                        </li>
+                        <li>프론트엔드 개발 (기여도 80%)</li>
                       </ul>
                     </li>
                     <li className="space-y-2">
