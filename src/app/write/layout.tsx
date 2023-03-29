@@ -10,17 +10,6 @@ export const metadata: Metadata = {
   description: "웹 개발자 김찬우의 글",
 };
 
-export async function generateStaticParams() {
-  const database = await notion.databases.retrieve({
-    database_id: process.env.NOTION_WRITE_DB_ID as string,
-  });
-  return (database as any).properties?.category?.multi_select?.options?.map(
-    (el: any) => ({
-      category: el?.name,
-    })
-  );
-}
-
 // 글 데이터베이스 가져오기
 async function getData() {
   const notion = new Client({ auth: process.env.NOTION_SECRET });

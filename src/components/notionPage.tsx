@@ -231,7 +231,6 @@ interface RichTextProps {
   richText: RichText;
 }
 export const NotionRichText = ({ richText }: RichTextProps) => {
-  console.log(richText);
   if (!richText?.type) return null;
   if (richText?.type && richText?.href) {
     return (

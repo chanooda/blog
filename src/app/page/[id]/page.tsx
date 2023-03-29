@@ -9,6 +9,9 @@ import { Metadata } from "next";
 import NotFound from "@/app/not-found";
 import { Block } from "@/types/notionType";
 
+export const dynamic = "force-static";
+export const revalidate = 1800;
+
 async function getBlocks(id: string) {
   try {
     const notion = new Client({ auth: process.env.NOTION_SECRET });
@@ -61,6 +64,8 @@ export default async function NotionPage({
   const [blocks, page] = await Promise.all([blocksData, pageData]);
 
   let numberedList: Block[] = [];
+  console.log(`페이지 렌더링 - ${params?.id}`);
+  console.log("----------------------------------------------");
   if (!blocks || !page) return <NotFound />;
   else
     return (
