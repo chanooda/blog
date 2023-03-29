@@ -41,6 +41,7 @@ export const NotionBlock = async ({
   listStep = 1,
   numberedList,
 }: BlockProps) => {
+  console.log(block);
   const child = block?.has_children && ((await getData(block?.id)) as any);
   if (!block?.type) return null;
   if (
@@ -101,7 +102,7 @@ export const NotionBlock = async ({
     return (
       <>
         <div
-          className={`w-full flex items-start min-w-0 mb-2 ${
+          className={`w-full flex items-start min-w-0 mb-3 ${
             block?.type === "column_list"
               ? "flex-row justify-start gap-2"
               : "flex-col"
@@ -116,7 +117,7 @@ export const NotionBlock = async ({
               className="w-full"
               style={{ ...getColor(block?.heading_1?.color) }}
             >
-              <h1 className="text-3xl font-semibold">
+              <h1 className="mt-4 text-3xl font-semibold">
                 {block?.heading_1?.rich_text?.map((el, i) => (
                   <NotionRichText key={i} richText={el} />
                 ))}
@@ -128,7 +129,7 @@ export const NotionBlock = async ({
               className="w-full"
               style={{ ...getColor(block?.heading_2?.color) }}
             >
-              <h1 className="text-2xl font-semibold">
+              <h1 className="mt-4 text-2xl font-semibold">
                 {block?.heading_2?.rich_text?.map((el, i) => (
                   <NotionRichText key={i} richText={el} />
                 ))}
@@ -140,7 +141,7 @@ export const NotionBlock = async ({
               className="w-full"
               style={{ ...getColor(block?.heading_3?.color) }}
             >
-              <h1 className="text-xl font-semibold">
+              <h1 className="mt-4 text-xl font-semibold">
                 {block?.heading_3?.rich_text?.map((el, i) => (
                   <NotionRichText key={i} richText={el} />
                 ))}
@@ -169,7 +170,7 @@ export const NotionBlock = async ({
           {/* 숫자 리스트 */}
           {numberedList && numberedList?.length > 0 && (
             <ul
-              className="mb-2 whitespace-pre-wrap ml-5 space-y-2"
+              className="whitespace-pre-wrap ml-5 space-y-2"
               style={{
                 ...getColor(block?.numbered_list_item?.color),
                 ...getListStyle("number", listStep),
@@ -190,7 +191,7 @@ export const NotionBlock = async ({
           )}
           {block?.type === "bulleted_list_item" && (
             <ul
-              className="mb-2 whitespace-pre-wrap pl-5 space-y-2"
+              className="whitespace-pre-wrap pl-5 space-y-2"
               style={{
                 ...getColor(block?.bulleted_list_item?.color),
                 ...getListStyle("bullet", listStep),
@@ -207,6 +208,12 @@ export const NotionBlock = async ({
             <div className="w-full h-[0.5px] bg-gray-200 my-2" />
           )}
           {block?.type === "code" && <NotionCode block={block} />}
+          {block?.type === "embed" && (
+            <iframe
+              src={block?.embed?.url}
+              className="w-full min-h-[200px] bg-white rounded-md p-2"
+            />
+          )}
           {block?.type !== "numbered_list_item" &&
             child &&
             child?.results.map((el: Block, i: number) => (

@@ -34,7 +34,8 @@ export type BlockType =
   | "heading_2"
   | "heading_3"
   | "code"
-  | "numbered_list_item";
+  | "numbered_list_item"
+  | "embed";
 export type RichTextType = "text" | "mention" | "equation";
 export type CoverType = "external" | "file";
 
@@ -110,6 +111,7 @@ export interface Block {
   heading_2?: { rich_text: RichText[]; color: ColorType };
   heading_3?: { rich_text: RichText[]; color: ColorType };
   code?: { rich_text: RichText[]; language: string };
+  embed?: { url: string };
 }
 
 export interface Properties {
