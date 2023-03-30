@@ -211,7 +211,7 @@ export const NotionBlock = async ({
           {block?.type === "embed" && (
             <iframe
               src={block?.embed?.url}
-              className="w-full min-h-[200px] bg-white rounded-md p-2"
+              className="w-full min-h-[400px] bg-white rounded-md p-2"
             />
           )}
           {block?.type !== "numbered_list_item" &&

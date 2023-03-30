@@ -4,8 +4,7 @@ import { Client } from "@notionhq/client";
 import { MultiSelectList } from "@/components/notionPage";
 import { Metadata } from "next";
 
-export const dynamic = "force-static";
-export const revalidate = 1800;
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "프로젝트 - 김찬우 개발 블로그",
