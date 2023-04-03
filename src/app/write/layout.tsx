@@ -29,7 +29,9 @@ export default async function WriteLayout({
   return (
     <div className="w-full h-full flex relative overflow-hidden">
       <WriteSidebar database={database} />
-      <div className="p-4 w-full min-w-0 overflow-auto">{children}</div>
+      <div className="w-full min-w-0 overflow-auto">
+        <div className="max-w-[1200px] mx-auto p-4">{children}</div>
+      </div>
     </div>
   );
 }

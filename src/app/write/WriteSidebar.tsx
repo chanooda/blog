@@ -19,8 +19,8 @@ export default function WriteSidebar({ database }: WriteSidebarProps) {
   return (
     <>
       <div
-        className={`py-4 pr-4 min-w-[150px] w-[150px] h-full border-r absolute flex-col gap-2 bg-white dark:bg-gray-900 transition-all 
-        ${!showSidebar ? "left-[-150px]" : "flex left-0"} md:flex md:static `}
+        className={`p-4 min-w-[150px] w-[150px] h-[inherit] border-r absolute flex-col gap-2 bg-white dark:bg-gray-900 transition-all left-0
+        ${!showSidebar ? "left-[-100%]" : "flex left-0"} md:flex md:static`}
       >
         <div
           className="flex justify-end md:hidden"
@@ -41,8 +41,8 @@ export default function WriteSidebar({ database }: WriteSidebarProps) {
         )}
       </div>
       <div
-        className={`py-4 pr-4 min-w-[30px] w-[30px] h-full border-r flex-col items-center gap-2  bg-white dark:bg-gray-900 ${
-          !showSidebar ? "flex" : "hidden"
+        className={`py-4 px-4 min-w-[50px] h-full border-r flex-col items-center gap-2  bg-white dark:bg-gray-900 ${
+          !showSidebar && "flex"
         } md:hidden `}
       >
         <GiHamburgerMenu

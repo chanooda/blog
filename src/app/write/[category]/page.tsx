@@ -33,6 +33,7 @@ export default async function Write({
   params: { category: string; next_cursor: string };
 }) {
   const data = await getData(params.category, params.next_cursor);
+  console.log(JSON.stringify(data));
   return (
     <div className="w-full pb-8">
       <div className="w-full flex-col flex gap-4">
@@ -40,10 +41,14 @@ export default async function Write({
           <Link key={el?.id} href={`/page/${el?.id}`}>
             <div className="w-full flex gap-4 cursor-pointer">
               {el?.properties?.image?.files[0] ? (
-                <div className="w-[30%] min-w-[100px] max-w-[300px] rounded-md shadow-md aspect-[1.5/0.8] overflow-hidden">
+                <div className="w-[30%] min-w-[100px] max-w-[300px] rounded-md shadow-md aspect-[1.5/0.8] overflow-hidden relative">
                   <img
                     className="object-cover w-full h-full"
-                    src={el?.properties?.image?.files[0]?.file?.url}
+                    src={
+                      el?.properties?.image?.files[0]?.[
+                        el?.properties?.image?.files[0]?.type
+                      ]?.url
+                    }
                     alt="대표 이미지"
                   />
                 </div>

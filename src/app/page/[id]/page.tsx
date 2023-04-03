@@ -61,15 +61,14 @@ export default async function NotionPage({
   const [blocks, page] = await Promise.all([blocksData, pageData]);
 
   let numberedList: Block[] = [];
-  console.log(`페이지 렌더링 - ${params?.id}`);
-  console.log("----------------------------------------------");
+
   if (!blocks || !page) return <NotFound />;
   else
     return (
-      <div className="w-full">
+      <div className="max-w-[1200px] mx-auto shadow-xl pb-4 bg-[#ffffff8e] dark:bg-gray-800">
         <NotionCover cover={(page as any)?.cover} />
         <NotionProperties properties={(page as any)?.properties} />
-        <div className="w-full flex flex-col max-w-[900px] mx-auto">
+        <div className="w-full flex flex-col max-w-[900px] mx-auto px-4">
           {blocks?.results?.map((el: any, i: any) => {
             if (el?.type === "numbered_list_item") {
               numberedList.push(el);

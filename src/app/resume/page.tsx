@@ -30,7 +30,7 @@ export default function Resume({ isMe = false }: ResumeProps) {
   };
 
   return (
-    <div className="w-full pt-10 pb-8">
+    <div className="max-w-[1200px] mx-auto pt-10 pb-8 px-4">
       <div id="resume" className="w-full [&_li]:ml-8">
         <div className="flex flex-col space-y-14">
           {/* 기본정보 */}
@@ -68,7 +68,7 @@ export default function Resume({ isMe = false }: ResumeProps) {
             </div>
             {!isMe && (
               <div className="p-4 bg-gray-200 dark:bg-gray-700 rounded-xl">
-                <p className="text-sm">
+                <p className="text-base">
                   React, Typescript를 주력으로 하는 개발 경력 1년차 신입 웹
                   개발자입니다.
                   <br />
@@ -102,7 +102,7 @@ export default function Resume({ isMe = false }: ResumeProps) {
             <ul className="flex flex-col gap-2 list-disc">
               <li>
                 <div className="flex gap-2 items-center flex-wrap">
-                  <h3>공통</h3>
+                  <h3 className="block w-[80px]">공통</h3>
                   <div className="flex gap-2 flex-wrap">
                     <Badge
                       color="F7DF1E"
@@ -116,7 +116,7 @@ export default function Resume({ isMe = false }: ResumeProps) {
               </li>
               <li>
                 <div className="flex gap-2 items-center flex-wrap">
-                  <h3>프론트엔트</h3>
+                  <h3 className="block w-[80px]">프론트엔트</h3>
                   <div className="flex gap-2 flex-wrap">
                     <Badge color="61DAFB" label="React" iconColor="black" />
                     <Badge color="000000" label="Next.js" />
@@ -131,7 +131,7 @@ export default function Resume({ isMe = false }: ResumeProps) {
               </li>
               <li>
                 <div className="flex gap-2 flex-wrap items-center">
-                  <h3>백엔드</h3>
+                  <h3 className="block w-[80px]">백엔드</h3>
                   <div className="flex gap-2 flex-wrap">
                     <Badge color="000000" label="Express" />
                     <Badge color="E0234E" label="NestJS" />
@@ -142,7 +142,7 @@ export default function Resume({ isMe = false }: ResumeProps) {
               </li>
               <li>
                 <div className="flex gap-2 flex-wrap items-center">
-                  <h3>기타</h3>
+                  <h3 className="block w-[80px]">기타</h3>
                   <div className="flex gap-2 flex-wrap">
                     <Badge color="F05032" label="Git" />
                     <Badge color="FF9900" label="Amazon EC2" />
@@ -179,10 +179,12 @@ export default function Resume({ isMe = false }: ResumeProps) {
                               웹 신규 서비스 클라이언트 개발
                             </h4>
                             <p>
-                              한국서부발전의 계좌이체거래약정서 등록 정부과제
+                              - 한국서부발전의 계좌이체거래약정서 등록 정부과제
                               웹서비스 개발
                             </p>
-                            <p>사내 첫 내부 서비스 웹앱 프론트엔드 단독 개발</p>
+                            <p>
+                              - 사내 첫 내부 서비스 웹앱 프론트엔드 단독 개발
+                            </p>
                           </div>
                         </li>
                         <li>
@@ -191,11 +193,11 @@ export default function Resume({ isMe = false }: ResumeProps) {
                               웹 프론트엔드 신규 개발기술 도입 및 개선
                             </h4>
                             <p>
-                              모노레포 및 디자인 시스템을 이용한 관리자 웹
+                              - 모노레포 및 디자인 시스템을 이용한 관리자 웹
                               서비스 단독 개발
                             </p>
                             <p>
-                              react 관련 신규 라이브러리, 기술 실서비스 도입
+                              - react 관련 신규 라이브러리, 기술 실서비스 도입
                             </p>
                           </div>
                         </li>

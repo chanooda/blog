@@ -105,6 +105,10 @@ export interface Block {
       url: string;
       expiry_time: string;
     };
+    external:{
+      url: string;
+      expiry_time: string;
+    };
   };
   divider?: {};
   heading_1?: { rich_text: RichText[]; color: ColorType };

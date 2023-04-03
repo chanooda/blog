@@ -41,7 +41,6 @@ export const NotionBlock = async ({
   listStep = 1,
   numberedList,
 }: BlockProps) => {
-  console.log(block);
   const child = block?.has_children && ((await getData(block?.id)) as any);
   if (!block?.type) return null;
   if (
@@ -109,7 +108,12 @@ export const NotionBlock = async ({
           }`}
           style={{
             paddingLeft:
-              step > 1 && parentType !== "column_list" ? "25px" : "0px",
+              step > 1 &&
+              parentType !== "column_list" &&
+              block?.type !== "column_list" &&
+              block?.type !== "image"
+                ? "25px"
+                : "0px",
           }}
         >
           {block?.type === "heading_1" && (
@@ -154,7 +158,12 @@ export const NotionBlock = async ({
                 parentType === "column_list" ? "max-w-[200px]" : ""
               }`}
             >
-              <img className="w-full" src={block?.image?.file?.url} />
+              {block?.image && (
+                <img
+                  className="w-full"
+                  src={block?.image?.[block?.image?.type]?.url}
+                />
+              )}
             </div>
           )}
           {block?.type === "paragraph" && (
@@ -290,7 +299,7 @@ interface PropertiesProps {
 }
 export const NotionProperties = ({ properties }: PropertiesProps) => {
   return (
-    <div className="mb-20 space-y-2 w-full mt-8">
+    <div className="mb-20 pt-8 space-y-2 w-full px-8">
       <h1 className="text-4xl">
         {properties?.이름?.title[0]?.text?.content ||
           properties?.Name?.title[0]?.text?.content}

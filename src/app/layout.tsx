@@ -3,6 +3,8 @@ import { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: "김찬우 개발 블로그",
   description: "웹 개발자 김찬우의 개발 블로그",
@@ -58,10 +60,10 @@ export default function RootLayout({
             __html: setThemeMode,
           }}
         ></script>
-        <div className="w-full h-full mx-auto max-w-[1400px] flex flex-col">
+        <div className="w-full h-full mx-auto flex flex-col">
           <Header />
-          <div className="w-full h-full px-4 mt-24 overflow-auto ">
-            {children}
+          <div className="w-full h-full mt-24 overflow-auto">
+            <div className="h-full">{children}</div>
           </div>
         </div>
       </body>
