@@ -101,7 +101,7 @@ export default function Resume({ isMe = false }: ResumeProps) {
             <h2 className="text-2xl mb-2">기술</h2>
             <ul className="flex flex-col gap-2 list-disc">
               <li>
-                <div className="flex gap-2 items-center flex-wrap">
+                <div className="flex gap-2 flex-wrap flex-col">
                   <h3 className="block w-[80px]">공통</h3>
                   <div className="flex gap-2 flex-wrap">
                     <Badge
@@ -110,12 +110,11 @@ export default function Resume({ isMe = false }: ResumeProps) {
                       iconColor="black"
                     />
                     <Badge color="3178C6" label="TypeScript" />
-                    <Badge color="339933" label="Node.js" />
                   </div>
                 </div>
               </li>
               <li>
-                <div className="flex gap-2 items-center flex-wrap">
+                <div className="flex gap-2 flex-wrap flex-col">
                   <h3 className="block w-[80px]">프론트엔트</h3>
                   <div className="flex gap-2 flex-wrap">
                     <Badge color="61DAFB" label="React" iconColor="black" />
@@ -130,9 +129,10 @@ export default function Resume({ isMe = false }: ResumeProps) {
                 </div>
               </li>
               <li>
-                <div className="flex gap-2 flex-wrap items-center">
+                <div className="flex gap-2 flex-wrap flex-col">
                   <h3 className="block w-[80px]">백엔드</h3>
                   <div className="flex gap-2 flex-wrap">
+                    <Badge color="339933" label="Node.js" />
                     <Badge color="000000" label="Express" />
                     <Badge color="E0234E" label="NestJS" />
                     <Badge color="2D3748" label="Prisma" />
@@ -141,7 +141,7 @@ export default function Resume({ isMe = false }: ResumeProps) {
                 </div>
               </li>
               <li>
-                <div className="flex gap-2 flex-wrap items-center">
+                <div className="flex gap-2 flex-wrap flex-col">
                   <h3 className="block w-[80px]">기타</h3>
                   <div className="flex gap-2 flex-wrap">
                     <Badge color="F05032" label="Git" />
