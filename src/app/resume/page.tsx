@@ -129,18 +129,6 @@ export default function Resume({ isMe = false }: ResumeProps) {
               </li>
               <li>
                 <div className="flex gap-2 flex-wrap flex-col">
-                  <h3 className="block w-[80px]">백엔드</h3>
-                  <div className="flex gap-2 flex-wrap">
-                    <Badge color="339933" label="Node.js" />
-                    <Badge color="000000" label="Express" />
-                    <Badge color="E0234E" label="NestJS" />
-                    <Badge color="2D3748" label="Prisma" />
-                    <Badge color="ff5914" label="TypeOrm" />
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="flex gap-2 flex-wrap flex-col">
                   <h3 className="block w-[80px]">기타</h3>
                   <div className="flex gap-2 flex-wrap">
                     <Badge color="F05032" label="Git" />
