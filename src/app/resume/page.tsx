@@ -308,6 +308,10 @@ export default function Resume({ isMe = false }: ResumeProps) {
                     <Badge color="FF4154" label="React Query" />
                     <Badge color="EC5990" label="React Hook Form" />
                     <Badge color="b543ac" label="Emotion" />
+                    <Badge color="FF9900" label="Amazon EC2" />
+                    <Badge color="569A31" label="Amazon S3" />
+                    <Badge color="2088FF" label="GitHub Actions" />
+                    <Badge color="2496ED" label="Docker" />
                   </div>
                   <ul className="list-[circle] mt-2 space-y-4">
                     <li>
@@ -432,6 +436,10 @@ export default function Resume({ isMe = false }: ResumeProps) {
                     <Badge color="000000" label="Express" />
                     <Badge color="3c6fe5" label="apexcharts" />
                     <Badge color="5A29E4" label="Axios" />
+                    <Badge color="FF9900" label="Amazon EC2" />
+                    <Badge color="569A31" label="Amazon S3" />
+                    <Badge color="2088FF" label="GitHub Actions" />
+                    <Badge color="2496ED" label="Docker" />
                   </div>
                   <ul className="list-[circle] mt-2 space-y-4">
                     <li>
