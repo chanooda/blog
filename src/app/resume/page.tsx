@@ -69,8 +69,7 @@ export default function Resume({ isMe = false }: ResumeProps) {
             {!isMe && (
               <div className="p-4 bg-gray-200 dark:bg-gray-700 rounded-xl">
                 <p className="text-base">
-                  React, Typescript를 주력으로 하는 개발 경력 1년차 신입 웹
-                  개발자입니다.
+                  React, Typescript를 주력으로 하는 개발 경력 1년차 웹 프론트 엔지니어 입니다.
                   <br />
                   <br />웹 프론트엔드 개발자로 첫 입사 후 한달 뒤 주요 신규
                   프로젝트에 참여하였습니다. 팀원과 소통하며 새로운 기술
