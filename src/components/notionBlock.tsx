@@ -253,7 +253,7 @@ export const NotionRichText = ({ richText }: RichTextProps) => {
       <a
         target="_blank"
         rel="noreferrer noopener"
-        className="whitespace-pre-wrap text-gray-500 underline"
+        className="whitespace-pre-wrap text-[rgba(0,0,0,0.6)] dark:text-[rgba(255,255,255,0.6)] underline"
         href={
           richText?.href && richText?.href[0] === "/"
             ? `/page${richText?.href}`
@@ -384,7 +384,7 @@ export const NotionCover = ({ cover }: CoverProps) => {
   if (!cover) return null;
   else
     return (
-      <div className="w-full h-[250px]">
+      <div className="w-full h-[250px] border-b border-b-[rgba(0,0,0,6)] dark:border-[rgba(255,255,255,0.6)]">
         <img
           className="w-full h-full object-cover"
           src={cover[cover?.type]?.url}
