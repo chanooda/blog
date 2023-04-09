@@ -19,7 +19,17 @@ export default function WriteSidebar({ database }: WriteSidebarProps) {
   return (
     <>
       <div
-        className={`p-4 min-w-[150px] w-[150px] h-[inherit] border-r absolute flex-col gap-2 bg-white dark:bg-[#121212] transition-all left-0
+        className={`py-4 px-4 min-w-[50px] h-full border-r flex-col items-center gap-2  bg-white dark:bg-[#121212] ${
+          !showSidebar && "flex"
+        } md:hidden `}
+      >
+        <GiHamburgerMenu
+          className="text-2xl cursor-pointer"
+          onClick={() => onClickHamburger(true)}
+        />
+      </div>
+      <div
+        className={`p-4 min-w-[150px] w-[150px] h-[inherit] border-r absolute z-10  flex-col gap-2 bg-white dark:bg-[#121212] transition-all left-0
         ${!showSidebar ? "left-[-100%]" : "flex left-0"} md:flex md:static`}
       >
         <div
@@ -39,16 +49,6 @@ export default function WriteSidebar({ database }: WriteSidebarProps) {
             </Link>
           )
         )}
-      </div>
-      <div
-        className={`py-4 px-4 min-w-[50px] h-full border-r flex-col items-center gap-2  bg-white dark:bg-gray-900 ${
-          !showSidebar && "flex"
-        } md:hidden `}
-      >
-        <GiHamburgerMenu
-          className="text-2xl cursor-pointer"
-          onClick={() => onClickHamburger(true)}
-        />
       </div>
     </>
   );

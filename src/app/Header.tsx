@@ -44,14 +44,13 @@ const Header = () => {
             </Link>
           ))}
         </div>
-        <div>
-          <button
-            onClick={changeTheme}
-            className="font-semibold cursor-pointer"
-          >
-            {dark ? <FiMoon /> : <MdOutlineWbSunny />}
-          </button>
-        </div>
+
+        <button
+          onClick={changeTheme}
+          className="text-lg cursor-pointer p-2 pb-0"
+        >
+          {dark ? <FiMoon /> : <MdOutlineWbSunny />}
+        </button>
       </div>
     </div>
   );
