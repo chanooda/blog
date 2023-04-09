@@ -1,6 +1,6 @@
 "use client";
 
-import { MultiSelectListCard } from "@/components/notionPage";
+import { MultiSelectListCard } from "@/components/notionBlock";
 import { GetDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -19,7 +19,7 @@ export default function WriteSidebar({ database }: WriteSidebarProps) {
   return (
     <>
       <div
-        className={`p-4 min-w-[150px] w-[150px] h-[inherit] border-r absolute flex-col gap-2 bg-white dark:bg-gray-900 transition-all left-0
+        className={`p-4 min-w-[150px] w-[150px] h-[inherit] border-r absolute flex-col gap-2 bg-white dark:bg-[#121212] transition-all left-0
         ${!showSidebar ? "left-[-100%]" : "flex left-0"} md:flex md:static`}
       >
         <div

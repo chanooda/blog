@@ -9,7 +9,7 @@ export default async function Page({
   return (
     <>
       {/* @ts-expect-error Async Server Component */}
-      <Write params={params} />;
+      <Write params={params} />
     </>
   );
 }

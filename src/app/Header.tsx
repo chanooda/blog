@@ -12,7 +12,7 @@ const nvaList = [
   { name: "Write", location: "/write/All" },
 ];
 
-export const Header = () => {
+const Header = () => {
   const [dark, setDark] = useState<null | boolean>(null);
   const pathname = usePathname();
 
@@ -29,7 +29,7 @@ export const Header = () => {
     localStorage.dark = !dark;
   };
   return (
-    <div className="w-full h-24 border-b border-gray-300 fixed left-0 bg-white dark:bg-gray-900">
+    <div className="w-full h-24 border-b border-gray-300 fixed left-0 bg-white dark:bg-[#121212] transition-colors">
       <div className=" p-4 w-full max-w-[1400px] h-full mx-auto flex gap-4 items-end justify-between">
         <div className="flex gap-3 items-center">
           {nvaList.map((el, i) => (
@@ -56,3 +56,5 @@ export const Header = () => {
     </div>
   );
 };
+
+export default Header;

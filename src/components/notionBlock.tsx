@@ -155,12 +155,12 @@ export const NotionBlock = async ({
           {block?.type === "image" && (
             <div
               className={`${
-                parentType === "column_list" ? "max-w-[200px]" : ""
+                parentType === "column_list" ? "max-w-[200px]" : "w-full"
               }`}
             >
               {block?.image && (
                 <img
-                  className="w-full"
+                  className="w-full object-contain block"
                   src={block?.image?.[block?.image?.type]?.url}
                 />
               )}

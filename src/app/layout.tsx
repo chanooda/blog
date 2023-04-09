@@ -1,7 +1,7 @@
-import { Header } from "@/components/layout";
 import { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Header from "@/app/Header";
 
 export const dynamic = "force-static";
 
@@ -53,7 +53,7 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon.ico" />
       </head>
       <body
-        className={`w-full h-full bg-white dark:bg-gray-900 text-gray-700  dark:text-gray-300 overflow-hidden`}
+        className={`w-full h-full bg-white dark:bg-[#121212] dark:text-[rgba(255,255,255,0.87)]  text-[rgba(0,0,0,0.8)]  dark:text-white overflow-hidden`}
       >
         <script
           dangerouslySetInnerHTML={{

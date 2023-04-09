@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Client } from "@notionhq/client";
-import { MultiSelectList } from "@/components/notionPage";
+import { MultiSelectList } from "@/components/notionBlock";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -41,14 +41,14 @@ export default async function Project() {
                   />
                 )}
               </div>
-              <div className="bg-white dark:bg-gray-700 p-3 h-full flex flex-col gap-2">
+              <div className="bg-white dark:bg-[#1e1e1e] p-3 h-full flex flex-col gap-2">
                 <h3 className="text-lg font-semibold">
                   {el.properties?.이름?.title[0]?.plain_text}
                 </h3>
                 <p className="text-gray-500 dark:text-gray-300">
                   {el?.properties["Text"]?.rich_text[0]?.text?.content}
                 </p>
-                <span className="text-xs text-gray-400">
+                <span className="text-xs text-gray-400 dark:text-[rgba(255,255,255,0.6)]">
                   {el?.created_time?.substring(0, 10)}
                 </span>
                 <div className="flex gap-2 flex-wrap">

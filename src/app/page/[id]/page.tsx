@@ -4,7 +4,7 @@ import {
   NotionBlock,
   NotionCover,
   NotionProperties,
-} from "@/components/notionPage";
+} from "@/components/notionBlock";
 import { Metadata } from "next";
 import NotFound from "@/app/not-found";
 import { Block } from "@/types/notionType";

@@ -1,7 +1,7 @@
 import React from "react";
 import { Client } from "@notionhq/client";
 import Link from "next/link";
-import { MultiSelectList } from "@/components/notionPage";
+import { MultiSelectList } from "@/components/notionBlock";
 import { HiPencil } from "react-icons/hi";
 import { formatDate } from "@/libs/notionUtils";
 import WriteNav from "@/components/writeNav";
