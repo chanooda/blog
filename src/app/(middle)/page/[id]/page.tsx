@@ -65,7 +65,7 @@ export default async function NotionPage({
   if (!blocks || !page) return <NotFound />;
   else
     return (
-      <div className="max-w-[1200px] min-h-full mx-auto shadow-xl pb-4 bg-[#ffffff8e] dark:bg-[#1e1e1e]">
+      <div className="w-full min-h-full shadow-xl pb-4 bg-[#ffffff8e] dark:bg-[#1e1e1e]">
         <NotionCover cover={(page as any)?.cover} />
         <NotionProperties properties={(page as any)?.properties} />
         <div className="w-full flex flex-col max-w-[900px] mx-auto px-4">

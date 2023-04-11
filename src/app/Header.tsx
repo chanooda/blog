@@ -7,7 +7,7 @@ import { MdOutlineWbSunny } from "react-icons/md";
 import { FiMoon } from "react-icons/fi";
 
 const nvaList = [
-  { name: "Me", location: "/" },
+  { name: "Home", location: "/" },
   { name: "Project", location: "/project" },
   { name: "Write", location: "/write/All" },
 ];
@@ -30,7 +30,7 @@ const Header = () => {
   };
   return (
     <div className="w-full h-24 border-b border-gray-300 fixed left-0 bg-white dark:bg-[#121212] transition-colors">
-      <div className=" p-4 w-full max-w-[1400px] h-full mx-auto flex gap-4 items-end justify-between">
+      <div className=" p-4 w-full max-w-[1000px] h-full mx-auto flex gap-4 items-end justify-between">
         <div className="flex gap-3 items-center">
           {nvaList.map((el, i) => (
             <Link

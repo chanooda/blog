@@ -27,10 +27,10 @@ export default async function WriteLayout({
 }) {
   const database = await getData();
   return (
-    <div className="w-full h-full flex relative overflow-hidden">
+    <div className="mx-auto w-full h-full flex relative">
       <WriteSidebar database={database} />
       <div className="w-full min-w-0 overflow-auto">
-        <div className="max-w-[1200px] mx-auto p-4">{children}</div>
+        <div className="max-w-full mx-auto p-4">{children}</div>
       </div>
     </div>
   );

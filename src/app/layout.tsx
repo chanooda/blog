@@ -60,10 +60,10 @@ export default function RootLayout({
             __html: setThemeMode,
           }}
         ></script>
-        <div className="w-full h-full mx-auto flex flex-col">
+        <div className="w-full h-full flex flex-col">
           <Header />
           <div className="w-full h-full mt-24 overflow-auto">
-            <div className="h-full">{children}</div>
+            <div className="h-full w-full">{children}</div>
           </div>
         </div>
       </body>
