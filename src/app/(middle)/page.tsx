@@ -6,6 +6,7 @@ import { MultiSelectList } from "@/components/notionBlock";
 import Info from "./resume/info";
 import { formatDate } from "@/libs/notionUtils";
 import { HiPencil } from "react-icons/hi";
+import WriteBoard from "@/components/writeBoard";
 
 async function getProjects() {
   const notion = new Client({ auth: process.env.NOTION_SECRET });
@@ -94,53 +95,7 @@ export default async function page() {
         </Link>
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 h-full">
           {writes.results.map((el: any) => (
-            <Link key={el?.id} href={`/page/${el?.id}`}>
-              <div className="w-full flex flex-col gap-4 cursor-pointer">
-                {el?.properties?.image?.files[0] ? (
-                  <div className="w-full rounded-md shadow-md aspect-[1.5/0.8] overflow-hidden relative">
-                    <img
-                      className="object-cover w-full h-full"
-                      src={
-                        el?.properties?.image?.files[0]?.[
-                          el?.properties?.image?.files[0]?.type
-                        ]?.url
-                      }
-                      alt="대표 이미지"
-                    />
-                  </div>
-                ) : (
-                  <div className="w-[30%] min-w-[100px] max-w-[300px] aspect-[1.5/0.8] overflow-hidden bg-slate-100 flex items-center dark:bg-slate-600 justify-center shadow-md rounded-md">
-                    <HiPencil className="text-gray-400 text-5xl" />
-                  </div>
-                )}
-                <div className="w-full flex flex-col gap-2 min-w-0 flex-1">
-                  <div className="w-full min-w-0">
-                    <h2 className="w-full font-semibold whitespace-nowrap text-ellipsis overflow-hidden">
-                      {el?.properties?.Name?.title[0]?.text?.content}
-                    </h2>
-                    <div>
-                      <p
-                        style={
-                          {
-                            wordBreak: "break-word",
-                            display: "-webkit-box",
-                            "-webkit-box-orient": "vertical",
-                            "-webkit-line-clamp": "3",
-                          } as any
-                        }
-                        className="text-gray-600 mt-2 text-sm w-full h-16 text-ellipsis break-words overflow-hidden"
-                      >
-                        {el?.properties["Text"]?.rich_text[0]?.text?.content}
-                      </p>
-                    </div>
-                    <span className="text-xs text-gray-500">
-                      {formatDate(el?.created_time)}
-                    </span>
-                  </div>
-                  <MultiSelectList multiSelect={el?.properties?.tags} />
-                </div>
-              </div>
-            </Link>
+            <WriteBoard key={el?.id} write={el} />
           ))}
         </div>
       </Board>

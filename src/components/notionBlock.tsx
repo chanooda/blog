@@ -15,6 +15,7 @@ import {
 import { Client } from "@notionhq/client";
 import React, { ComponentProps, Fragment } from "react";
 import { NotionCode } from "./notionClient";
+import NotionBlockImage from "./notionBlockImage";
 
 // 자식 블럭 가져오기
 async function getData(id: string) {
@@ -159,9 +160,8 @@ export const NotionBlock = async ({
               }`}
             >
               {block?.image && (
-                <img
-                  className="w-full object-contain block"
-                  src={block?.image?.[block?.image?.type]?.url}
+                <NotionBlockImage
+                  url={block?.image?.[block?.image?.type]?.url}
                 />
               )}
             </div>
