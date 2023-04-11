@@ -54,7 +54,7 @@ export default async function Write({
                     />
                   </div>
                 ) : (
-                  <div className="w-[30%] min-w-[100px] max-w-[300px] aspect-[1.5/0.8] overflow-hidden bg-slate-100 flex items-center dark:bg-slate-600 justify-center shadow-md rounded-md">
+                  <div className="w-full aspect-[1.5/0.8] overflow-hidden bg-slate-100 flex items-center dark:bg-slate-600 justify-center shadow-md rounded-md">
                     <HiPencil className="text-gray-400 text-5xl" />
                   </div>
                 )}
