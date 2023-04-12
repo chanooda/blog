@@ -9,6 +9,26 @@ import { Metadata } from "next";
 import NotFound from "@/app/not-found";
 import { Block } from "@/types/notionType";
 
+export async function generateStaticParams() {
+  const notion = new Client({ auth: process.env.NOTION_SECRET });
+  const response = await notion.databases.query({
+    database_id: process.env.NOTION_WRITE_DB_ID as string,
+    page_size: 100,
+    sorts: [
+      {
+        timestamp: "created_time",
+        direction: "descending",
+      },
+    ],
+  });
+
+  return (response as any)?.results?.map((el: any) => ({
+    id: el.id,
+  }));
+  {
+  }
+}
+
 async function getBlocks(id: string) {
   try {
     const notion = new Client({ auth: process.env.NOTION_SECRET });
