@@ -41,7 +41,7 @@ async function getWrite(category: string) {
 
 export default async function page() {
   const projectsData = await getProjects();
-  const writesData = await getWrite("all");
+  const writesData = await getWrite("All");
   const [projects, writes] = await Promise.all([projectsData, writesData]);
   return (
     <div className="w-full max-w-[1000px] mx-auto space-y-6">
