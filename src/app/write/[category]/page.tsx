@@ -1,11 +1,21 @@
 import React from "react";
 import { Client } from "@notionhq/client";
-import Link from "next/link";
-import { MultiSelectList } from "@/components/notionBlock";
-import { HiPencil } from "react-icons/hi";
-import { formatDate } from "@/libs/notionUtils";
 import WriteNav from "@/components/writeNav";
 import WriteBoard from "@/components/writeBoard";
+
+export async function generateStaticParams() {
+  const notion = new Client({ auth: process.env.NOTION_SECRET });
+  const database = await notion.databases.retrieve({
+    database_id: process.env.NOTION_WRITE_DB_ID as string,
+  });
+  return (database as any)?.properties?.category?.multi_select?.options?.map(
+    (el: any) => ({
+      category: el.name,
+    })
+  );
+  {
+  }
+}
 
 async function getData(category: string, next_cursor: string) {
   const notion = new Client({ auth: process.env.NOTION_SECRET });
