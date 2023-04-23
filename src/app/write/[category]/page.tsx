@@ -33,8 +33,9 @@ export default async function Write({
 }: {
   params: { category: string; next_cursor: string };
 }) {
-  const data = await getData(params.category, params.next_cursor);
-
+  // console.log(params)
+  const data = await getData( decodeURIComponent(params.category), params.next_cursor);
+  // console.log(JSON.stringify(data))
   return (
     <div className="w-full pb-8">
       <div className="w-full flex-col flex gap-4">

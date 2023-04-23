@@ -16,6 +16,7 @@ export default function WriteSidebar({ database }: WriteSidebarProps) {
   const onClickHamburger = (val: boolean) => {
     setShowSideBar(val);
   };
+  // console.log(JSON.stringify(database))
   return (
     <>
       <div

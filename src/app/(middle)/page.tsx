@@ -23,7 +23,7 @@ async function getProjects() {
   return response;
 }
 
-async function getWrite(category: string, next_cursor?: string) {
+async function getWrite(category: string) {
   const notion = new Client({ auth: process.env.NOTION_SECRET });
   const response = await notion.databases.query({
     database_id: process.env.NOTION_WRITE_DB_ID as string,
@@ -34,12 +34,7 @@ async function getWrite(category: string, next_cursor?: string) {
         direction: "descending",
       },
     ],
-    ...(category !== "all" && {
-      filter: { property: "category", multi_select: { contains: category } },
-    }),
-    ...(next_cursor && {
-      start_cursor: next_cursor,
-    }),
+    filter: { property: "category", multi_select: { contains: category } },
   });
   return response;
 }
